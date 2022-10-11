@@ -1,5 +1,5 @@
 from django.shortcuts import render
-def inicio(request):
+def agendar(request):
     context={}
-    return render(request,'index1.html',context)
+    return render(request,'agendar/agendar.html',context)
 # Create your views here.
