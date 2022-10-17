@@ -8,7 +8,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
             fill="currentColor" class="bi bi-calendar-date-fill" viewBox="0 0 16
             16" style="height: 200px;
-            width: 100px; margin-right: 410px; margin-top: -50px;">
+            width: 100px; margin-left: 250px; margin-top: -50px;">
             <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0
                 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zm5.402 9.746c.625 0 1.184-.484
                 1.184-1.18 0-.832-.527-1.23-1.16-1.23-.586 0-1.168.387-1.168
@@ -28,7 +28,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16
                     16" style="height: 300px;
-                    width: 100px; margin-left: 23px; margin-top: -248px;">
+                    width: 100px; margin-left: 480px; margin-top: -248px;">
                     <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464
                         1.464 0 0
                         1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987
@@ -46,7 +46,7 @@
                         1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
                     </svg>
                 </div>
-                <div style="width: 100px; margin-left: 800px; margin-top:
+                <div style="width: 100px; margin-left: 700px; margin-top:
                     -195px;">
                     <i class="bi bi-file-earmark-text-fill"></i>
                     <svg xmlns="http://www.w3.org/2000/svg" width="100"
@@ -60,13 +60,12 @@
                             2.5a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1h-4z"/>
                         </svg>
                     </div>
-                    <div class="boton1" style="margin-top: -15px;">
-                        <button type="button" class="btn btn-outline-dark
-                            bg-white" style="margin: 30px;">AGENDAR CITA</button>
-                        <button type="button" class="btn btn-outline-dark
-                            bg-white" style="margin: 30px;">MODIFICAR CITA</button>
-                        <button type="button" class="btn btn-outline-dark
-                            bg-white" style="margin: 30px;">BUSCAR CITA</button>
+                    <div class="boton1" style="margin-top: 10px; margin-left: 240px;">
+                            <a href="{% url 'submenu' %}" class="btn btn-primary" style="background-color:black">Agendar Cita</a>
+                        
+                            <a href="{% url 'modificar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;">Modificar Cita</a>
+                       
+                            <a href="{% url 'buscar' %}" class="btn btn-primary" style="background-color: black; margin-left: 100px;">Buscar Cita</a>
                     </div>
                     <div class="boton2" style="margin-top: 8%;">
                         <button type="button" class="btn btn-outline-dark:
