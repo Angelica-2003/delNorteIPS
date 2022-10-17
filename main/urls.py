@@ -22,6 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',login,name='login'),
     path('inicio/',inicio,name='inicio'),
-    path('agendar/',include('agendar.urls'))
+    path('index/',inicio,name='index'),
+    path('submenu/',inicio,name='submenu'),
+    path('agendar/',include('agendar.urls')),
+    path('buscar/',include('buscar.urls')),
+    path('modificar/',include('modificar.urls')),
 
 ]
