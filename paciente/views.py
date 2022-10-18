@@ -4,12 +4,12 @@ from paciente.forms import pacienteform
 
 # Create your views here.
 
-def paciente_crear(request):
-    titulo="Paciente - Crear"
-    Form= pacienteform
+def pacientes_crear(request):
+    titulo="Pacientes - Crear"
+    Form= pacienteform()
     context={
         "titulo":titulo,
         "form":Form
         
     }
-    return render(request,'paciente/pacientes-crear.html',context)
+    return render(request,'pacientes-crear/pacientes-crear.html',context)
