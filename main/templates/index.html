@@ -68,17 +68,16 @@
                             <a href="{% url 'buscar' %}" class="btn btn-primary" style="background-color: black; margin-left: 100px;">Buscar Cita</a>
                     </div>
                     <div class="boton2" style="margin-top: 8%;">
-                        <button type="button" class="btn btn-outline-dark:
-                            bg-white" style="margin: 30px;">CANCELAR CITA</button>
-                        <button type="button" class="btn btn-outline-dark
-                            bg-white" style="margin: 30px;">BUSCAR USUARIO</button>
-                        <button type="button" class="btn btn-outline-dark
-                            bg-white" style="margin: 30px;">MODIFICAR USUARIO</button>
-                        <button type="button" class="btn btn-outline-dark
-                            bg-white" style="margin: 30px;">LISTAR USUARIOS</button>
+                        <a href="{% url 'submenu' %}" class="btn btn-primary" style="background-color:black">Cancelar Cita</a>
+
+                        <a href="{% url 'modificar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;">Buscar Usuario</a>
+
+                        <a href="{% url 'modificar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;">Buscar Usuario</a>
+
+                        <a href="{% url 'modificar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;">Listar Usuario</a>
                     </div>
-                    <div style="width: 100px; margin-left: 230px; margin-top:
-                        -180px;">
+                    <div style="width: 100px; margin-left: 170px; margin-top:
+                        -100px;">
                         <i class="bi bi-calendar2-x-fill"></i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="100"
                             height="100" fill="currentColor" class="bi

@@ -2,10 +2,10 @@ from dataclasses import fields
 
 import django
 
-from django import forms 
+from django.forms import ModelForm
 from paciente.models import paciente
 
-class pacienteform(forms.ModelForm):
+class pacienteform(ModelForm):
     class Meta:
         model= paciente
-        fields='__all__'
+        exclude=['servicio']

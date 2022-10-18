@@ -29,5 +29,7 @@ urlpatterns = [
     path('agendar/',include('agendar.urls')),
     path('buscar/',include('buscar.urls')),
     path('modificar/',include('modificar.urls')),
+    path('cancelar/',include('cancelar.urls')),
+    path('buscarUsuario/',include('buscarUsuario.urls')),
 
 ]
