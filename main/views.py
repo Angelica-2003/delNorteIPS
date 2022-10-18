@@ -15,3 +15,8 @@ def pacientes(request):
 def submenu(request):
     context={}
     return render(request,'submenu.html',context)
+
+def listar(request):
+    context={}
+    return render(request,'listar.html',context)
+

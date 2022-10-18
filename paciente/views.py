@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from django.shortcuts import Form
+
+    # TODO: Define form fields here
+
 
 from paciente.forms import pacienteform
 
@@ -9,7 +13,7 @@ def pacientes_crear(request):
     Form= pacienteform()
     context={
         "titulo":titulo,
-        "form":form
+        "form":Form
         
     }
     return render(request,'pacientes-crear/pacientes-crear.html',context)

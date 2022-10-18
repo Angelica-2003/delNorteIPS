@@ -25,7 +25,7 @@ class medico(models.Model):
         CC='C.C', _('Cedula de Ciudadania')
         PP='P.P', _('Pasaporte')
         CE='C.E', _('Cedula de Extranjeria')   
-    tipoDocumento=models.CharField(max_length=10, default=tipoDocumento.CC, verbose_name="Tipo de Documento")
+    tipoDocumento=models.CharField(max_length=10, default=tipoDocumento.CC, verbose_name="Tipo de Documento")   # type: ignore # type: ignore
     numDocumento=models.CharField(max_length=45, verbose_name="Numero de Documento")
     nombres=models.TextField(max_length=45, verbose_name="nombres")
     apellidos=models.TextField(max_length=45, verbose_name="apellidos")
@@ -98,7 +98,7 @@ class funcionario(models.Model):
         CC='C.C', _('Cedula de Ciudadania')
         CE='C.E', _('Cedula de Extranjeria')
         PP='P.P', _('Pasaporte')
-    tipoDocumento=models.CharField(max_length=10, default=tipoDocumento.CC, verbose_name="Tipo de Documento")
+    tipoDocumento=models.CharField(max_length=10, default=tipoDocumento.CC, verbose_name="Tipo de Documento")  # type: ignore
     numDocumento=models.CharField(max_length=50, verbose_name="Numero de Documento")
     telefono=models.CharField(max_length=20, verbose_name="Telefono")
     email=models.CharField(max_length=45, verbose_name="Correo Electronico")
