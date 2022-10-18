@@ -9,7 +9,7 @@ def pacientes_crear(request):
     Form= pacienteform()
     context={
         "titulo":titulo,
-        "form":Form
+        "form":form
         
     }
     return render(request,'pacientes-crear/pacientes-crear.html',context)

@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'crispy_forms',
+    'django.contrib.staticfiles',   
     'bootstrap5', # pip install django-bootstrap-v5
+    'crispy_forms',
     'agendar',
     'buscar',
     'cancelar',

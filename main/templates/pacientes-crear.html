@@ -1,11 +1,11 @@
-{% extends 'partials/interfaz-crud.html' %}
-{% load static %}
+{% extends 'partials/body.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block contenido %}
 <div class="container">
 <form action="" method="POST">
-    {{form| crispy}}
+    {{form|crispy}}
     {% csrf_token %}
     <input type="submit" value="Registrar">
 

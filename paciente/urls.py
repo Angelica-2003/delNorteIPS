@@ -1,6 +1,8 @@
 from django.urls import path
 
 
+
+
 from paciente.views import pacientes_crear
 
 
