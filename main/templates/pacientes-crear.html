@@ -3,58 +3,16 @@
 {% load static %}
 
 {% block contenido %}
-<section class="form-register" style="width: 550px; background:#158f97d1; padding: 30px; margin: auto; margin-top: 46px;border-radius: 20px;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: white;box-shadow: 7px 13px 37px rgb(8, 8, 8);">
 
-     <h4>Formulario De Registro</h4 style="font-size: 22px; margin-bottom: 20px; text-align: center; color: rgb(241, 247, 241); margin-top: 10px;">
-     
-    <input class="controls" style=" width: 100%;background: #f5f6f7;padding: 10px;border-radius: 4px;
-    margin-bottom: 16px;border: 1px solid ;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;color:black;" type="text" name="nombres" id="nombres" placeholder="Nombre">
-
-    <input class="controls" style=" width: 100%;background: #f5f6f7;padding: 10px;border-radius: 4px;
-    margin-bottom: 16px;border: 1px solid ;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;color:black;" type="text" name="apellidos" id="apellidos" placeholder="Apellidos">
-
-    <input class="controls" style=" width: 100%;background: #f5f6f7;padding: 10px;border-radius: 4px;
-    margin-bottom: 16px;border: 1px solid ;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;color:black;" type="text" name="tipo de documento" id="tipo de documento" placeholder="Tipo de Documento">
-
-    <input class="controls" style=" width: 100%;background: #f5f6f7;padding: 10px;border-radius: 4px;
-    margin-bottom: 16px;border: 1px solid ;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;color:black;" type="text" name="número de documento" id="número de documento" placeholder= Número de Documento">
-
-    <input class="controls" style=" width: 100%;background: #f5f6f7;padding: 10px;border-radius: 4px;
-    margin-bottom: 16px;border: 1px solid ;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;color:black;" type="text" name="dirección" id="dirección" placeholder="Dirección">
-
-    <input class="controls" style=" width: 100%;background: #f5f6f7;padding: 10px;border-radius: 4px;
-    margin-bottom: 16px;border: 1px solid ;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;color:black;" type="text" name="correo electronico" id="correo electronico" placeholder="Correo Electronico">
-
-    <input class="controls" style=" width: 100%;background: #f5f6f7;padding: 10px;border-radius: 4px;
-    margin-bottom: 16px;border: 1px solid ;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;color:black;" type="text" name="edad" id="edad" placeholder=" Edad">
-
-    <input class="controls" style=" width: 100%;background: #f5f6f7;padding: 10px;border-radius: 4px;
-    margin-bottom: 16px;border: 1px solid ;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;color:black;" type="text" name="nº telefono" id="nº telefono" placeholder="Nº Telefono">
-
-    <input class="controls" style=" width: 100%;background: #f5f6f7;padding: 10px;border-radius: 4px;
-    margin-bottom: 16px;border: 1px solid ;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;color:black;" type="text" name="contraseña" id="contraseña" placeholder="Contraseña">
-
-    <input class="controls" style=" width: 100%;background: #f5f6f7;padding: 10px;border-radius: 4px;
-    margin-bottom: 16px;border: 1px solid ;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;color:black;" type="text" name="repetir contraseña" id="repetir contraseña" placeholder="Repita su Contraseña">
-
-    <p class="acepto" style= height:40px;text-align:center;font-size:18px;line-height:40px;font-family:arialbold;>Acepto <a href="#" style="color: white; text-decoration: none;">Terminos y Condiciones</a></p>
-    <input class="botons" style=" width: 90%;background:#fbfcfb;border: none;padding: 12px;color: rgb(8, 8, 8);margin: 16px;
-    font-size: 16px;font-family: arial bold;" type="submit" value="Aceptar">
-    <p><a href="#" style="height: 40px;text-align: center;font-size: 18px;line-height: 40px;font-family: arial bold;  color: white;
-        text-decoration: none;">¿ya tengo cuenta?</a></p>
-    </section>
+<div class="container w-50 bg-white p-5 rounded-3 shadow"> 
+    <h2>{{titulo}}</h2>
+    <form action="" method="POST">
+        {{form|crispy}}
+        {% csrf_token %}
+        <input type="submit" value="Registrar">
     
+    </form> </div>
+       
     
 {% endblock contenido %}
     

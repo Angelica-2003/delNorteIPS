@@ -1,11 +1,8 @@
-from dataclasses import fields
-
-import django
 
 from django.forms import ModelForm
-from paciente.models import paciente
+from paciente.models import Paciente
 
-class pacienteform(ModelForm):
+class PacienteForm(ModelForm):
     class Meta:
-        model= paciente
+        model= Paciente
         exclude=['servicio']

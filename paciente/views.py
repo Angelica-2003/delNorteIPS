@@ -1,19 +1,17 @@
 from django.shortcuts import render
-from django.shortcuts import Form
-
-    # TODO: Define form fields here
 
 
-from paciente.forms import pacienteform
+from paciente.forms import PacienteForm
 
 # Create your views here.
 
 def pacientes_crear(request):
     titulo="Pacientes - Crear"
-    Form= pacienteform()
+    form= PacienteForm() 
+    print ("hola mundo")
     context={
         "titulo":titulo,
-        "form":Form
+        "form":form
         
     }
-    return render(request,'pacientes-crear/pacientes-crear.html',context)
+    return render(request,'pacientes-crear.html',context)

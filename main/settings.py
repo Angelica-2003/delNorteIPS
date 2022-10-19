@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',   
     'bootstrap5', # pip install django-bootstrap-v5
-    'crispy_forms',
+    'crispy_forms', # pip install django-crispy-forms
+    'crispy_bootstrap5', # pip install crispy-bootstrap5
     'agendar',
     'buscar',
     'cancelar',
@@ -49,7 +50,8 @@ INSTALLED_APPS = [
     'listarUsuario',
     'paciente',
 ]
-
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
