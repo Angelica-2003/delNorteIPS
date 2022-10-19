@@ -7,98 +7,42 @@
     <table class="table" style="background-color:white; margin:1%;">
         <thead style="background-color: #abc241;">
         <tr>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Tipo Documento</th>
-            <th>Número Documento</th>
-            <th>Edad</th>
-            <th>Correo</th>
-            <th>Eps</th>
-            <th>Celular</th>
-            <th>Dirección</th>
-            <th>Cargo</th>
-            <th>Estado</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Tipo De Documento</th>
+            <th scope="col">Numero De Documento</th>
+            <th scope="col">Tipo de Sangre</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Correo Electronico</th>
+            <th scope="col">Fecha de Nacimiento</th>
+            <th scope="col">Nombre de Contacto Familiar</th>
+            <th scope="col">Telefono de Contacto Familiar</th>
+            <th scope="col">Clave de Seguridad</th>
+            <th scope="col">Estado</th>
+        
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Carlos</td>
-            <td>Acevedo Martinez</td>
-            <td>Cedula</td>
-            <td>1007649376</td>
-            <td>20</td>
-            <td>carlos@gmil.com</td>
-            <td>Nueva EPS</td>
-            <td>3508747389</td>
-            <td>cll 22-45</td>
-            <td>Medicina General</td>
-            <td>Activo</td>
-        </tr>
-        <tr>
-            <td>Edwin</td>
-            <td>Aguirre Vargas</td>
-            <td>cedula</td>
-            <td>1116889373</td>
-            <td>27</td>
-            <td>edwin@gmail.com</td>
-            <td>Capresoca</td>
-            <td>3208757367</td>
-            <td>cll 30-12</td>
-            <td>Ginecologia</td>
-            <td>Activo</td>
-        </tr>
-        <tr>
-            <td>laura Sofia</td>
-            <td>Ceron Martinez</td>
-            <td>cedula</td>
-            <td>1007648938</td>
-            <td>30</td>
-            <td>laura@gmail.com</td>
-            <td>Nueva EPS</td>
-            <td>3106754937</td>
-            <td>cll 12-35</td>
-            <td>Radilogia</td>
-            <td>Ativo</td>
-        </tr>
-        <tr>
-            <td>Camila</td>
-            <td>Gonzalez Murillo</td>
-            <td>cedula</td>
-            <td>1007648738</td>
-            <td>36</td>
-            <td>camila@gmail.com</td>
-            <td>Capresoca</td>
-            <td>3207754937</td>
-            <td>cll 20-15</td>
-            <td>Medicina General</td>
-            <td>Ativo</td>
-            </tr>
+            
+            {% for paciente in listar  %}
             <tr>
-            <td>Miguel Angel</td>
-            <td>Cachay Perales</td>
-            <td>cedula</td>
-            <td>1007648735</td>
-            <td>22</td>
-            <td>miguel@gmail.com</td>
-            <td>Nueva EPS</td>
-            <td>3507654937</td>
-            <td>cll 10-40</td>
-            <td>Urología</td>
-            <td>Ativo</td>
+                <td>{{paciente.nombres}}</td>
+                <td>{{paciente.apellidos}}</td>
+                <td>{{paciente.TipoDocumento}}</td>
+                <td>{{paciente.numDocumento}}</td>
+                <td>{{paciente.rh}}</td>
+                <td>{{paciente.telefono}}</td>
+                <td>{{paciente.email}}</td>
+                <td>{{paciente.fechaNacimiento}}</td>
+                <td>{{paciente.nombreContacto}}</td>
+                <td>{{paciente.telefonoContacto}}</td>
+                <td>{{paciente.clave}}</td>
+                <td>{{paciente.Estado}}</td>
             </tr>
-            <tr>
-            <td>Paola</td>
-            <td>Gomez Mantilla</td>
-            <td>cedula</td>
-            <td>1117648938</td>
-            <td>28</td>
-            <td>paola@gmail.com</td>
-            <td>Sanitas</td>
-            <td>3206750937</td>
-            <td>cll 9-28</td>
-            <td>Neurologia</td>
-            <td>Ativo</td>
-        </tr>
+                
+            {% endfor %}
+                
+       
         </tbody>
     </table>
     </div>

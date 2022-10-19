@@ -12,7 +12,10 @@ def inicio(request):
     return render(request,'index.html',context)
 
 def pacientes(request):
-    context={}
+    imagen= '/static/img/img1.jpeg'
+    context={
+        "imagen":imagen
+    }
     return render(request,'pacientes-crear.html',context)
 
 def submenu(request):
