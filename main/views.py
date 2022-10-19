@@ -1,7 +1,10 @@
 from django.shortcuts import render
 
 def login(request):
-    context={}
+    imagen= '/static/img/IMGprin.jfif'
+    context={
+        "imagen":imagen
+    }
     return render(request,'login.html',context)
 
 def inicio(request):
