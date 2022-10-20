@@ -1,5 +1,5 @@
 
-from multiprocessing import context
+
 from django.shortcuts import  redirect,render
 
 
@@ -23,7 +23,7 @@ def pacientes_crear(request):
         form= PacienteForm() 
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('listar')
         else:
             print("Error")
     else:
