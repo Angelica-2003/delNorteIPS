@@ -26,3 +26,7 @@ def listar(request):
     context={}
     return render(request,'listar.html',context)
 
+def buscarUsuario(request):
+    context={}
+    return render(request,'buscarUsuario.html',context)
+

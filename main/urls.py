@@ -26,6 +26,7 @@ urlpatterns = [
     path('index/',inicio,name='index'),
     path('submenu/',submenu,name='submenu'),
     path('listar/',listar,name='listar'),
+    path('buscarUsuario/',listar,name='buscarUsuario'),
     path('pacientes/',include('paciente.urls')),
     path('agendar/',include('agendar.urls')),
     path('buscar/',include('buscar.urls')),
