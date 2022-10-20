@@ -1,5 +1,5 @@
 
-
+from urllib.request import Request
 from django.shortcuts import  redirect,render
 
 
@@ -8,26 +8,28 @@ from paciente.models import Paciente
 
 # Create your views here.
 
-def paciente(request):
+def pacientes(request):
     titulo="Paciente"
-    paciente= Paciente.objects.all()
+    pacientes= Paciente.objects.all()
     context={
         'titulo':titulo,
-        'paciente':paciente
+        'pacientes':pacientes
         
     }
 
+    return render(request,"listar.html",context)
+
 def pacientes_crear(request):
     titulo="Pacientes - Crear"
-    if request.method == 'POST':
-        form= PacienteForm() 
+    if request.method == "POST":
+        form= PacienteForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('listar')
+            return redirect('login')
         else:
             print("Error")
     else:
-        form= PacienteForm
+        form= PacienteForm()
     context={
         "titulo":titulo,
         "form":form

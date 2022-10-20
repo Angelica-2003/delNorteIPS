@@ -24,11 +24,12 @@
         </thead>
         <tbody>
             
-        {% for paciente in paciente  %}
+        {% for paciente in pacientes  %}
             <tr>
+                
                 <td>{{paciente.nombres}}</td>
                 <td>{{paciente.apellidos}}</td>
-                <td>{{paciente.TipoDocumento}}</td>
+                <td>{{paciente.tipoDocumento}}</td>
                 <td>{{paciente.numDocumento}}</td>
                 <td>{{paciente.rh}}</td>
                 <td>{{paciente.telefono}}</td>
@@ -37,9 +38,9 @@
                 <td>{{paciente.nombreContacto}}</td>
                 <td>{{paciente.telefonoContacto}}</td>
                 <td>{{paciente.clave}}</td>
-                <td>{{paciente.Estado}}</td>
+                <td>{{paciente.estado}}</td>
             </tr>
-                
+        
             {% endfor %}
         </tbody>
     </table>
