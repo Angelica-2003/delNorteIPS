@@ -19,6 +19,8 @@
             <th scope="col">Telefono de Contacto Familiar</th>
             <th scope="col">Clave de Seguridad</th>
             <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+
         
         </tr>
         </thead>
@@ -39,6 +41,8 @@
                 <td>{{paciente.telefonoContacto}}</td>
                 <td>{{paciente.clave}}</td>
                 <td>{{paciente.estado}}</td>
+                <td> <a href="{% url 'pacientes-modificar' %}" class="btn btn-primary" style="background-color:rgb(15, 96, 42)">Modificar</a><a href="#" class="btn btn-primary" style="background-color:rgb(184, 21, 21)">Borrar</a> </td>
+                
             </tr>
         
             {% endfor %}

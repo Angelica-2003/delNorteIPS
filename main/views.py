@@ -30,3 +30,7 @@ def buscarUsuario(request):
     context={}
     return render(request,'buscarUsuario.html',context)
 
+def modificarUsuario(request):
+    context={}
+    return render(request,'modificarUsuario.html',context)
+

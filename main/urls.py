@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from agendar.views import submenu
 
-from main.views import inicio, login, submenu, pacientes,listar
+from main.views import inicio, login, submenu, pacientes,listar,modificarUsuario
 
 urlpatterns = [
     path('admin/', admin.site.urls),

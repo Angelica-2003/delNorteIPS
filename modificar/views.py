@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def modificar (request):
+def modificar(request):
     context={
         
     }
