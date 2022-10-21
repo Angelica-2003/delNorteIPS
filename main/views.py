@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views.defaults import page_not_found
 
 def login(request):
     imagen= '/static/img/IMGprin.jfif'
@@ -33,4 +34,7 @@ def buscarUsuario(request):
 def modificarUsuario(request):
     context={}
     return render(request,'modificarUsuario.html',context)
+
+def error_404(request,exception):
+    return page_not_found(request,'404.html')
 

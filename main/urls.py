@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls import handler404
 from agendar.views import submenu
 
-from main.views import inicio, login, submenu, pacientes,listar,modificarUsuario
 
+from main.views import error_404, inicio, login, submenu, pacientes,listar,modificarUsuario
+
+handler404= error_404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',login,name='login'),
