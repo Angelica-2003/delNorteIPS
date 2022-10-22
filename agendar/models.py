@@ -1,11 +1,10 @@
-from email.policy import default
-from random import choices
-from tabnanny import verbose
+
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 
 # Create your models here.
 
+<<<<<<< HEAD
 class tipoEcografia(models.Model):
     nombreTipoEcografia=models.CharField(max_length=45, verbose_name="Nombre Tipo de Ecografia")
     descripcion=models.CharField(max_length=45, verbose_name="Descripcion")
@@ -115,5 +114,8 @@ class cita(models.Model):
 
 class historialDeCitas(models.Model):
     cita=models.ForeignKey(cita, on_delete=models.CASCADE, verbose_name="Cita")
+=======
+
+>>>>>>> ff379c38cce54dc83f2c1d66d5566bfb45771024
 
 
