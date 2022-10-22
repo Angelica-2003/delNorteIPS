@@ -1,0 +1,48 @@
+{% extends 'partials/body.html' %}
+
+
+{% block contenido %}
+
+<div class="container">            
+    <table class="table" style="background-color:white; margin:1%;">
+        <thead style="background-color: #abc241;">
+        <tr>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Tipo De Documento</th>
+            <th scope="col">Numero De Documento</th>
+            <th scope="col">Tipo de Sangre</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Correo Electronico</th>
+            <th scope="col">Fecha de Nacimiento</th>
+            <th scope="col">Nombre de Contacto Familiar</th>
+            <th scope="col">Telefono de Contacto Familiar</th>
+            <th scope="col">Clave de Seguridad</th>
+            <th scope="col">Estado</th>
+        
+        </tr>
+        </thead>
+        <tbody>
+            
+        {% for paciente in paciente  %}
+            <tr>
+                <td>{{paciente.nombres}}</td>
+                <td>{{paciente.apellidos}}</td>
+                <td>{{paciente.TipoDocumento}}</td>
+                <td>{{paciente.numDocumento}}</td>
+                <td>{{paciente.rh}}</td>
+                <td>{{paciente.telefono}}</td>
+                <td>{{paciente.email}}</td>
+                <td>{{paciente.fechaNacimiento}}</td>
+                <td>{{paciente.nombreContacto}}</td>
+                <td>{{paciente.telefonoContacto}}</td>
+                <td>{{paciente.clave}}</td>
+                <td>{{paciente.Estado}}</td>
+            </tr>
+                
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    
+{% endblock contenido %}

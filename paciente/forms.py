@@ -1,11 +1,8 @@
-from dataclasses import fields
-from tkinter.tix import Form
-import django
 
-from django import forms 
-from paciente.models import paciente
+from django.forms import ModelForm
+from paciente.models import Paciente
 
-class pacienteform(forms.ModelForm):
+class PacienteForm(ModelForm):
     class Meta:
-        model= paciente
-        fields='__all__'
+        model= Paciente
+        exclude=['estado']
