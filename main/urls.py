@@ -20,7 +20,7 @@ from agendar.views import submenu
 from buscarUsuario.views import buscarUsuario
 
 
-from main.views import error_404, inicio, login, submenu, pacientes,listar,modificarUsuario
+from main.views import error_404, inicio, login, submenu, pacientes,listar
 
 handler404= error_404
 urlpatterns = [
