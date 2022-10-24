@@ -1,7 +1,7 @@
 from django.forms import ModelForm
-from servicios.models import Servicios
+from servicios.models import servicio
 
 class ServiciosForm(ModelForm):
     class Meta:
-        model= Servicios
+        model= servicio
         exclude=['estado']

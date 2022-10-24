@@ -31,6 +31,7 @@ urlpatterns = [
     path('submenu/',submenu,name='submenu'),
     path('buscarUsuario/',listar,name='buscarUsuario'),
     path('pacientes/',include('paciente.urls')),
+    path('servicios/',include('servicios.urls')),
     path('agendar/',include('agendar.urls')),
     path('buscar/',include('buscar.urls')),
     path('modificar/',include('modificar.urls')),

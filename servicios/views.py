@@ -3,13 +3,13 @@ from django.shortcuts import  redirect,render
 
 
 from servicios.forms import ServiciosForm
-from servicios.models import Servicios
+from servicios.models import servicio
 
 # Create your views here.
 
 def servicios(request):
     titulo="Servicios"
-    pacientes= Servicios.objects.all()
+    pacientes= servicios.objects.all()
     context={
         'titulo':titulo,
         'servicios':servicios
