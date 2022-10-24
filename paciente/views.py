@@ -65,3 +65,10 @@ def pacientes_modificar(request):
         
     }
     return render(request,'modificarUsuario.html',context)
+
+def buscarUsuario(request):
+    titulo="Buscar Usuario"
+    context={
+        
+    }
+    return render(request,'buscar/buscarUsuario.html',context)

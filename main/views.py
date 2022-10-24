@@ -13,7 +13,7 @@ def inicio(request):
     return render(request,'index.html',context)
 
 def pacientes(request):
-    imagen= '/static/img/img1.jpeg'
+    imagen= '/static/img/IMGprin.jfif'
     context={
         "imagen":imagen
     }

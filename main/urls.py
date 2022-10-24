@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls import handler404
 from agendar.views import submenu
+from buscarUsuario.views import buscarUsuario
 
 
 from main.views import error_404, inicio, login, submenu, pacientes,listar,modificarUsuario
