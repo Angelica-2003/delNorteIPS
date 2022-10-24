@@ -48,17 +48,19 @@ def modificar(request):
 
     return render(request,'modificarUsuario.html',context)
 
-def pacientes_modificar(request):
+def pacientes_modificar(request, pk):
     titulo="Pacientes - Modificar"
+    paciente= Paciente.objects.get(id=pk)
     if request.method == "POST":
-        form= PacienteForm(request.POST)
+        form= PacienteForm(request.POST,instance=paciente)
         if form.is_valid():
             form.save()
             return redirect('login')
         else:
-            print("Error")
+            print("Error al guardar")
     else:
-        form= PacienteForm()
+        form= PacienteForm(instance=paciente)
+
     context={
         "titulo":titulo,
         "form":form

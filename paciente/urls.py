@@ -8,7 +8,7 @@ urlpatterns = [
 
     path('crear/',pacientes_crear,name='pacientes-crear'),
     path('listar/',pacientes,name='pacientes-listar'),
-    path('modificar/',pacientes_modificar,name='pacientes-modificar'),
+    path('modificar/<int:pk>/',pacientes_modificar,name='pacientes-modificar'),
 
 
 ]

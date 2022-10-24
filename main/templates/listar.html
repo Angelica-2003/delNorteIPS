@@ -41,7 +41,7 @@
                 <td>{{paciente.telefonoContacto}}</td>
                 <td>{{paciente.clave}}</td>
                 <td>{{paciente.estado}}</td>
-                <td> <a href="{% url 'pacientes-modificar' %}" class="btn btn-primary" style="background-color:rgb(15, 96, 42)">Modificar</a><a href="#" class="btn btn-primary" style="background-color:rgb(184, 21, 21)">Borrar</a> </td>
+                <td> <a href="{% url 'pacientes-modificar' paciente.id %}" class="btn btn-primary" style="background-color:rgb(15, 96, 42)">Modificar</a><a href="#" class="btn btn-primary" style="background-color:rgb(184, 21, 21)">Borrar</a> </td>
                 
             </tr>
         
