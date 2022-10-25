@@ -3,7 +3,7 @@ from django.shortcuts import  redirect,render
 
 
 from servicios.forms import ServiciosForm
-from servicios.models import servicio
+from servicios.models import Servicio
 
 # Create your views here.
 
