@@ -68,4 +68,24 @@ def pacientes_modificar(request, pk):
     }
     return render(request,'modificarUsuario.html',context)
 
+def pacientes_eliminar(request, pk):
+    titulo="Pacientes - Eliminar"
+    pacientes= Paciente.objects.all()
+    
+    
+    Paciente.objects.filter(id=pk).update(
+            estado= '0'
+        )
+    return redirect("login")
+        
+            
+
+    context={
+        'pacientes':pacientes,
+        "titulo":titulo,
+        
+        
+    }
+    return render(request,'pacientes-crear.html',context)
+
 
