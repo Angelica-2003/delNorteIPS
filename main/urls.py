@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls import handler404
-from agendar.views import submenu
 from buscarUsuario.views import buscarUsuario
 
 
@@ -32,7 +31,7 @@ urlpatterns = [
     path('buscarUsuario/',listar,name='buscarUsuario'),
     path('pacientes/',include('paciente.urls')),
     path('servicios/',include('servicios.urls')),
-    path('agendar/',include('agendar.urls')),
+    path('cita/',include('cita.urls')),
     path('buscar/',include('buscar.urls')),
     path('modificar/',include('modificar.urls')),
     path('cancelar/',include('cancelar.urls')),

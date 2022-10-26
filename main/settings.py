@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'bootstrap5', # pip install django-bootstrap-v5
     'crispy_forms', # pip install django-crispy-forms
     'crispy_bootstrap5', # pip install crispy-bootstrap5
-    'agendar',
     'buscar',
     'cancelar',
     'modificar',
@@ -51,6 +50,8 @@ INSTALLED_APPS = [
     'listarUsuario',
     'paciente',
     'servicios',
+    'cita',
+
 
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"

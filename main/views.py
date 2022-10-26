@@ -38,3 +38,7 @@ def servicios(request):
     context={}
     return render(request,'servicios.html',context)
 
+def cita(request):
+    context={}
+    return render(request,'cita.html',context)
+
