@@ -15,18 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.conf.urls import handler404
 from agendar.views import submenu
+from buscarUsuario.views import buscarUsuario
 
-from main.views import inicio, login, submenu, pacientes,listar
 
+from main.views import error_404, inicio, login, submenu, pacientes,listar
+
+handler404= error_404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',login,name='login'),
     path('inicio/',inicio,name='inicio'),
     path('index/',inicio,name='index'),
     path('submenu/',submenu,name='submenu'),
-    path('listar/',listar,name='listar'),
+    path('buscarUsuario/',listar,name='buscarUsuario'),
     path('pacientes/',include('paciente.urls')),
+    path('servicios/',include('servicios.urls')),
     path('agendar/',include('agendar.urls')),
     path('buscar/',include('buscar.urls')),
     path('modificar/',include('modificar.urls')),

@@ -19,22 +19,16 @@
             <th scope="col">Telefono de Contacto Familiar</th>
             <th scope="col">Clave de Seguridad</th>
             <th scope="col">Estado</th>
-            <th scope="col">Acciones</th>
-
         
         </tr>
         </thead>
         <tbody>
             
-        {% for paciente in pacientes  %}
+        {% for paciente in paciente  %}
             <tr>
-            
-            {% if paciente.estado != "3" %}
-                
-                
                 <td>{{paciente.nombres}}</td>
                 <td>{{paciente.apellidos}}</td>
-                <td>{{paciente.tipoDocumento}}</td>
+                <td>{{paciente.TipoDocumento}}</td>
                 <td>{{paciente.numDocumento}}</td>
                 <td>{{paciente.rh}}</td>
                 <td>{{paciente.telefono}}</td>
@@ -43,15 +37,12 @@
                 <td>{{paciente.nombreContacto}}</td>
                 <td>{{paciente.telefonoContacto}}</td>
                 <td>{{paciente.clave}}</td>
-                <td>{{paciente.estado}}</td>
-                <td> <a href="{% url 'pacientes-modificar' paciente.id %}" class="btn btn-primary" style="background-color:rgb(15, 96, 42)">Modificar</a><a href="{% url 'pacientes-eliminar' paciente.id %}" class="btn btn-primary" style="background-color:rgb(184, 21, 21)">Borrar</a> </td>
-                
+                <td>{{paciente.Estado}}</td>
             </tr>
-            {% endif %}
+                
             {% endfor %}
         </tbody>
     </table>
     </div>
     
 {% endblock contenido %}
-    

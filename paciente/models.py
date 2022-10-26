@@ -85,7 +85,7 @@ class Paciente(models.Model):
     class Estado(models.TextChoices):
         ACTIVO='1', _('Activo')
         INACTIVO='0', _('Inactivo')
-    estado=models.BooleanField(max_length=10, choices=Estado.choices, default=Estado.ACTIVO, verbose_name="Estado")  # type: ignore
-    servicio=models.ForeignKey("servicio", on_delete=models.CASCADE, verbose_name="Servicio")
+    estado=models.CharField(max_length=10, choices=Estado.choices, default=Estado.ACTIVO, verbose_name="Estado")  # type: ignore
+    #servicio=models.ForeignKey("servicio", on_delete=models.CASCADE, verbose_name="Servicio")
     #nacionalidad=models.ForeignKey(Nacionalidad, on_delete=models.CASCADE, verbose_name="Nacionalidad")   
     #genero=models.ForeignKey(Genero, on_delete=models.CASCADE, verbose_name="Genero")

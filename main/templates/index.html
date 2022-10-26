@@ -64,20 +64,23 @@
                     <div class="boton1" style="margin-top: 10px; margin-left: 240px;">
                             <a href="{% url 'submenu' %}" class="btn btn-primary" style="background-color:black">Agendar Cita</a>
                         
-                            <a href="{% url 'modificar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;">Modificar Cita</a>
-                       
+                            <a href="{% url 'submenu' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;">Modificar Cita</a>
+                
                             <a href="{% url 'buscar' %}" class="btn btn-primary" style="background-color: black; margin-left: 100px;">Buscar Cita</a>
                     </div>
-                    <div class="boton2" style="margin-top: 8%;margin-left: 70px;">
-                        <a href="{% url 'submenu' %}" class="btn btn-primary" style="background-color:black;margin-left: 100px;margin-top: 100px;">Cancelar Cita</a>
+                    <div class="boton2" style="margin-top: 20%;margin-left: 70px;">
+                        <a href="{% url 'submenu' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;margin-top: 10px;">Cancelar Cita</a>
 
-                        <a href="{% url 'modificar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;margin-top: 100px;">Buscar Usuario</a>
+                        <a href="{% url 'pacientes-listar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;margin-top: 10px;">Buscar Usuario</a>
 
-                        <a href="{% url 'modificar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;">Buscar Usuario</a>
+                        <a href="{% url 'pacientes-listar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px; margin-top: 10px;">modificar Usuario</a>
 
-                        <a href="{% url 'listar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;">Listar Usuario</a>
+                        <a href="{% url 'pacientes-listar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px; margin-top: 10px;">Listar Usuario</a>
+
+
                     </div>
-                    <div style="width: 100px; margin-left: 170px; margin-top:
+                    <div>
+                    <div style="width: 100px; margin-left: 170px; margin-top:-150;
                         -200px;">
                         <i class="bi bi-calendar2-x-fill"></i>
                         <svg xmlns="http://www.w3.org/2000/svg" width="100"
@@ -179,4 +182,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
+<a href="{% url 'servicios-crear' %}" class="btn btn-primary" style="background-color:black; margin-left: 700px; margin-top: 80px;">SERVICIOS</a>
+
+                            
 {% endblock contenido %}
