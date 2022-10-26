@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls import handler404
 from agendar.views import submenu
+from buscarUsuario.views import buscarUsuario
 
 
-from main.views import error_404, inicio, login, submenu, pacientes,listar,modificarUsuario
+from main.views import error_404, inicio, login, submenu, pacientes,listar
 
 handler404= error_404
 urlpatterns = [
@@ -30,6 +31,7 @@ urlpatterns = [
     path('submenu/',submenu,name='submenu'),
     path('buscarUsuario/',listar,name='buscarUsuario'),
     path('pacientes/',include('paciente.urls')),
+    path('servicios/',include('servicios.urls')),
     path('agendar/',include('agendar.urls')),
     path('buscar/',include('buscar.urls')),
     path('modificar/',include('modificar.urls')),

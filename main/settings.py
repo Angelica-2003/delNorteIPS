@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-f0-lf!b_5hjwo*(ztd8uv0q1mr8=%&$%qapz01in3t96w+g889'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'modificarUsuario',
     'listarUsuario',
     'paciente',
+    'servicios',
+
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
