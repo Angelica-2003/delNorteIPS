@@ -42,3 +42,7 @@ def cita(request):
     context={}
     return render(request,'cita.html',context)
 
+def costo(request):
+    context={}
+    return render(request,'costo.html',context)
+
