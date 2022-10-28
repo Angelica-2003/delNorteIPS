@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'modificarUsuario',
     'listarUsuario',
     'paciente',
-    'servicios',
     'cita',
 
 
@@ -95,9 +94,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bddn_oficial',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'USER': 'userbddn',
+        'PASSWORD': 'Unionmedicadelnorte',
+        'HOST': 'db4free.net',
         'PORT': 3306,
         
         }

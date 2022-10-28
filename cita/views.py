@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 
-from cita.forms import CitaForm
-from cita.models import Cita
+from cita.forms import CitaForm, ServiciosForm
+from cita.models import Cita, Servicio
 
 # Create your views here.
 
@@ -14,7 +14,7 @@ def cita(request):
         
     }
 
-    return render(request,"cita.html",context)
+    return render(request,"Cita/cita.html",context)
 
 def cita_crear(request):
     titulo="Agenda tu Cita"
@@ -22,7 +22,7 @@ def cita_crear(request):
         form= CitaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('inicio')
         else:
             print("Error")
     else:
@@ -32,4 +32,33 @@ def cita_crear(request):
         "form":form
         
     }
-    return render(request,'cita.html',context)
+    return render(request,'Cita/cita.html',context)
+
+def servicio(request):
+    titulo="Servicios"
+    servicios= Servicio.objects.all()
+    context={
+        'titulo':titulo,
+        'servicios':servicios
+        
+    }
+
+    return render(request,"Cita/servicios.html",context)
+
+def servicios_crear(request):
+    titulo="Crear Servicio"
+    if request.method == "POST":
+        form= ServiciosForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('inicio')
+        else:
+            print("Error")
+    else:
+        form= ServiciosForm()
+    context={
+        "titulo":titulo,
+        "form":form
+        
+    }
+    return render(request,'Cita/servicios.html',context)
