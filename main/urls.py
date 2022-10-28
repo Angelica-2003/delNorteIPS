@@ -28,6 +28,7 @@ urlpatterns = [
     path('inicio/',inicio,name='inicio'),
     path('index/',inicio,name='index'),
     path('submenu/',submenu,name='submenu'),
+    path('inicio/',inicio,name='costo'),
     path('buscarUsuario/',listar,name='buscarUsuario'),
     path('pacientes/',include('paciente.urls')),
     path('servicios/',include('servicios.urls')),
