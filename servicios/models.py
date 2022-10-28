@@ -11,8 +11,7 @@ class Servicio(models.Model):
         ACTIVO='1', _('Activo')
         INACTIVO='0', _('Inactivo')
     estado=models.BooleanField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO, verbose_name="Estado")  # type: ignore
-
-
+    
 
 
 
