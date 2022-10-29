@@ -1,0 +1,15 @@
+{% extends 'partials/body.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block contenido %}
+
+<div class="container w-50 bg-white p-5 rounded-3 shadow"> 
+    <h2>{{titulo}}</h2>
+    <form action="" method="POST">
+        {{form|crispy}}
+        {% csrf_token %}
+        <input class="btn btn bg-success" type="submit" value="Aceptar">
+    
+    </form> </div>
+{% endblock contenido %}
