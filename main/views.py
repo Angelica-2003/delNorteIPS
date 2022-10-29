@@ -34,4 +34,8 @@ def modificarUsuario(request):
 def error_404(request,exception):
     return page_not_found(request,'404.html')
 
+def buscar(request):
+    context={}
+    return render(request,'Cita/buscarCita.html',context)
+
 

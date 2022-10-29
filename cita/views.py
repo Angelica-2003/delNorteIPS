@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-
+from urllib.request import Request
 from cita.forms import CitaForm, ServiciosForm
 from cita.models import Cita, Servicio
 
@@ -22,7 +22,7 @@ def cita_crear(request):
         form= CitaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('inicio')
+            return redirect('login')
         else:
             print("Error")
     else:
@@ -62,3 +62,14 @@ def servicios_crear(request):
         
     }
     return render(request,'Cita/servicios.html',context)
+
+def cita_listar(request):
+    titulo="Cita-listar"
+    pacientes= Cita.objects.all()
+    context={
+        'titulo':titulo,
+        'cita':cita
+        
+    }
+
+    return render(request,"buscarCita.html",context)
