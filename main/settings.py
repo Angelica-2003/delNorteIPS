@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'bootstrap5', # pip install django-bootstrap-v5
     'crispy_forms', # pip install django-crispy-forms
     'crispy_bootstrap5', # pip install crispy-bootstrap5
-    'agendar',
     'buscar',
     'cancelar',
     'modificar',
@@ -50,7 +49,8 @@ INSTALLED_APPS = [
     'modificarUsuario',
     'listarUsuario',
     'paciente',
-    'servicios',
+    'cita',
+
 
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -94,9 +94,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bddn_oficial',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
+        'USER': 'userbddn',
+        'PASSWORD': 'Unionmedicadelnorte',
+        'HOST': 'db4free.net',
         'PORT': 3306,
         
         }
