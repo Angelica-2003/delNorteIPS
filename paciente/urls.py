@@ -11,6 +11,4 @@ urlpatterns = [
     path('modificar/<int:pk>/',pacientes_modificar,name='pacientes-modificar'),
     path('eliminar/<int:pk>/',pacientes_eliminar,name='pacientes-eliminar'),
 
-
-
 ]
