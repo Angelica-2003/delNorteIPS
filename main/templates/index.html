@@ -64,12 +64,13 @@
                     <div class="boton1" style="margin-top: 10px; margin-left: 240px;">
                             <a href="{% url 'cita-crear' %}" class="btn btn-primary" style="background-color:black">Agendar Cita</a>
                         
-                            <a href="{% url 'submenu' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;">Modificar Cita</a>
+                            <a href="{% url 'cita-listar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;">Modificar Cita</a>
                 
-                            <a href="{% url 'buscar' %}" class="btn btn-primary" style="background-color: black; margin-left: 100px;">Buscar Cita</a>
+                            <a href="{% url 'cita-listar' %}" class="btn btn-primary" style="background-color: black; margin-left: 100px;">Buscar Cita</a>
                     </div>
                     <div class="boton2" style="margin-top: 20%;margin-left: 70px;">
-                        <a href="{% url 'submenu' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;margin-top: 10px;">Cancelar Cita</a>
+                        
+                        <a href="{% url 'cita-listar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;margin-top: 10px;">Cancelar Cita</a>
 
                         <a href="{% url 'pacientes-listar' %}" class="btn btn-primary" style="background-color:black; margin-left: 100px;margin-top: 10px;">Buscar Usuario</a>
 

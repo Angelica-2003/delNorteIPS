@@ -31,7 +31,6 @@ urlpatterns = [
     path('inicio/',inicio,name='costo'),
     path('buscarUsuario/',listar,name='buscarUsuario'),
     path('pacientes/',include('paciente.urls')),
-    path('servicios/',include('servicios.urls')),
     path('cita/',include('cita.urls')),
     path('buscar/',include('buscar.urls')),
     path('modificar/',include('modificar.urls')),

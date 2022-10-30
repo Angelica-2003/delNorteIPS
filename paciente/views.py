@@ -20,7 +20,7 @@ def pacientes(request):
     return render(request,"listar.html",context)
 
 def pacientes_crear(request):
-    titulo="Pacientes - Crear"
+    titulo="Crear Pacientes"
     if request.method == "POST":
         form= PacienteForm(request.POST)
         if form.is_valid():
