@@ -6,3 +6,8 @@ class PacienteForm(ModelForm):
     class Meta:
         model= Paciente
         exclude=['estado']
+        
+class PacienteUpdateForm(ModelForm):
+    class Meta:
+        model= Paciente
+        exclude=['estado']
