@@ -22,7 +22,7 @@ def cita_crear(request):
         form= CitaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('inicio-adm')
         else:
             print("Error")
     else:
@@ -51,7 +51,7 @@ def servicios_crear(request):
         form= ServiciosForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('inicio')
+            return redirect('inicio-adm')
         else:
             print("Error")
     else:
@@ -92,7 +92,7 @@ def citas_modificar(request, pk):
         form= CitaForm(request.POST,instance=cita)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('inicio-adm')
         else:
             print("Error al guardar")
     else:
@@ -113,4 +113,4 @@ def citas_eliminar(request, pk):
     Cita.objects.filter(id=pk).update(
             estado= '0'
         )
-    return redirect("login")
+    return redirect("inicio-adm")
