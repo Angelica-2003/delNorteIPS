@@ -1,6 +1,7 @@
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -81,7 +82,7 @@ class Paciente(models.Model):
     fechaNacimiento=models.DateField(verbose_name="Fecha de Nacimiento", help_text="DD/MM/AAAA")
     nombreContacto=models.CharField(max_length=45, verbose_name="Nombre Contacto Familiar")
     telefonoContacto=models.CharField(max_length=20, verbose_name="Telefono Contacto Familiar")
-    clave=models.CharField(max_length=45, verbose_name="Clave de seguridad")
+    #clave=models.CharField(max_length=45, verbose_name="Clave de seguridad")
     class Estado(models.TextChoices):
         ACTIVO='1', _('Activo')
         INACTIVO='0', _('Inactivo')
@@ -89,3 +90,4 @@ class Paciente(models.Model):
     #servicio=models.ForeignKey("servicio", on_delete=models.CASCADE, verbose_name="Servicio")
     #nacionalidad=models.ForeignKey(Nacionalidad, on_delete=models.CASCADE, verbose_name="Nacionalidad")   
     #genero=models.ForeignKey(Genero, on_delete=models.CASCADE, verbose_name="Genero")
+    user=models.ForeignKey(User, on_delete=models.CASCADE)

@@ -1,8 +1,10 @@
 {% extends 'partials/body.html' %}
+{% load crispy_forms_tags %}
+
 
 
 {% block contenido %}
-
+<input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
 <div class="container">            
     <table class="table" style="background-color:white; margin:1%;">
         <thead style="background-color: #abc241;">
@@ -28,8 +30,6 @@
             
         {% for paciente in pacientes  %}
             <tr>
-            
-            {% if paciente.estado != "3" %}
                 
                 
                 <td>{{paciente.nombres}}</td>
@@ -44,10 +44,27 @@
                 <td>{{paciente.telefonoContacto}}</td>
                 <td>{{paciente.clave}}</td>
                 <td>{{paciente.estado}}</td>
-                <td> <a href="{% url 'pacientes-modificar' paciente.id %}" class="btn btn-primary" style="background-color:rgb(15, 96, 42)">Modificar</a><a href="{% url 'pacientes-eliminar' paciente.id %}" class="btn btn-primary" style="background-color:rgb(184, 21, 21)">Borrar</a> </td>
+                <td>
+                    <div class="row">
+                        <form action="" method="POST" class="col-4">
+                            {% csrf_token %}
+                            <input type="hidden" name="pk" value="{{paciente.id}}">
+                            <button class="btn btn-primary btn-block" name="form-editar">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </form>
+                        <form action="" class="col-4" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="pk" value="{{paciente.id}}">
+                            <button class="btn btn-danger btn-block" name="form-eliminar">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                        </form>
+                    </div>
+                </td>
+
                 
             </tr>
-            {% endif %}
             {% endfor %}
         </tbody>
     </table>

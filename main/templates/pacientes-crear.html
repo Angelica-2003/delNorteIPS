@@ -9,7 +9,7 @@
     <form action="" method="POST">
         {{form|crispy}}
         {% csrf_token %}
-        <input class="btn btn bg-success" type="submit" value="Registrar">
+        <button class="btn btn bg-success btn-block" name="form-crear">Registrarse</button>
     
     </form> </div>
 {% endblock contenido %}
