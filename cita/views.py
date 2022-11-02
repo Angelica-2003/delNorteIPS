@@ -22,7 +22,7 @@ def cita_crear(request):
         form= CitaForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('inicio-adm')
         else:
             print("Error")
     else:
@@ -51,7 +51,7 @@ def servicios_crear(request):
         form= ServiciosForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('inicio')
+            return redirect('inicio-adm')
         else:
             print("Error")
     else:
@@ -63,13 +63,54 @@ def servicios_crear(request):
     }
     return render(request,'Cita/servicios.html',context)
 
-def cita_listar(request):
+def citas_listar(request):
     titulo="Cita-listar"
-    pacientes= Cita.objects.all()
+    citas= Cita.objects.all()
     context={
         'titulo':titulo,
-        'cita':cita
+        'citas':citas
         
     }
 
-    return render(request,"buscarCita.html",context)
+    return render(request,"Cita/buscarCita.html",context)
+
+def modificar(request):
+    titulo="Modificar Cita"
+    citas= Cita.objects.all()
+    context={
+        'titulo':titulo,
+        'citas':citas
+        
+    }
+
+    return render(request,'Cita/modificarCita.html',context)
+
+def citas_modificar(request, pk):
+    titulo="Modifica tu cita"
+    cita= Cita.objects.get(id=pk)
+    if request.method == "POST":
+        form= CitaForm(request.POST,instance=cita)
+        if form.is_valid():
+            form.save()
+            return redirect('inicio-adm')
+        else:
+            print("Error al guardar")
+    else:
+        form= CitaForm(instance=cita)
+
+    context={
+        "titulo":titulo,
+        "form":form
+        
+    }
+    return render(request,'Cita/modificarCita.html',context)
+
+def citas_eliminar(request, pk):
+    titulo="Eliminar Cita"
+    pacientes= Cita.objects.all()
+    
+    
+    Cita.objects.filter(id=pk).update(
+            estado= '0'
+        )
+    return redirect("inicio-adm")

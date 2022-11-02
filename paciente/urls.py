@@ -1,16 +1,14 @@
 from django.urls import path
 
 
-from paciente.views import pacientes_crear, pacientes, modificar,pacientes_modificar, pacientes_eliminar
+from paciente.views import pacientes, pacientes_crear
 
 
 urlpatterns = [
-
-    path('crear/',pacientes_crear,name='pacientes-crear'),
-    path('listar/',pacientes,name='pacientes-listar'),
-    path('modificar/<int:pk>/',pacientes_modificar,name='pacientes-modificar'),
-    path('eliminar/<int:pk>/',pacientes_eliminar,name='pacientes-eliminar'),
-
+    
+    path('crear/',pacientes,name='pacientes'),
+    path('paciente-crear/',pacientes_crear,name='pacientes-crear'),
+    path('crear/<str:modal_status>',pacientes,name='pacientes'),
 
 
 ]

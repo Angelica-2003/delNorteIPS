@@ -21,13 +21,12 @@
             <tr>
             
             {% if cita.estado != "3" %}
-                
-                
+            
                 <td>{{cita.servicio}}</td>
                 <td>{{cita.fechaCita}}</td>
-                <td>{{cita.horaCita}</td>
+                <td>{{cita.horaCita}}</td>
                 <td>{{cita.estado}}</td>
-                <td> <a href="{% url 'pacientes-modificar' paciente.id %}" class="btn btn-primary" style="background-color:rgb(15, 96, 42)">Modificar</a><a href="{% url 'pacientes-eliminar' paciente.id %}" class="btn btn-primary" style="background-color:rgb(184, 21, 21)">Borrar</a> </td>
+                <td> <a href="{% url 'citas-modificar' cita.id %}" class="btn btn-primary" style="background-color:rgb(15, 96, 42)">Modificar</a><a href="{% url 'citas-eliminar' cita.id %}" class="btn btn-primary" style="background-color:rgb(184, 21, 21)">Borrar</a> </td>
                 
             </tr>
             {% endif %}
