@@ -7,6 +7,9 @@ from paciente.forms import PacienteForm, PacienteUpdateForm
 from paciente.models import Paciente
 
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.hashers import make_password
 
 # Create your views here.
 
@@ -21,15 +24,41 @@ from django.contrib import messages
 
 #     return render(request,"listar.html",context)
 
+@login_required(login_url="incio")
 def pacientes_crear(request):
     titulo="Crear Paciente"
     if request.method == "POST":
         form= PacienteForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('login')
+            if not User.objects.filter(username=request.POST["numDocumento"]):
+                user= User.objects.create_user("nombre","email","pass")
+                user.username=request.POST["numDocumento"]
+                user.first_name=request.POST["nombres"].title()
+                user.last_name=request.POST["apellidos"].title()
+                user.email=request.POST["email"]
+                user.password=make_password("@" + request.POST['nombres'][0] + request.POST['apellidos'][0] + request.POST['numDocumento'][-4:])
+                user.save()
+            else:
+                user=User.objects.get(username=request.POST["numDocumento"])
+
+            paciente=Paciente.objects.create(
+                nombres=request.POST["nombres"],
+                apellidos=request.POST["apellidos"],
+                tipoDocumento=request.POST["tipoDocumento"],
+                numDocumento=request.POST["numDocumento"],
+                rh=request.POST["rh"],
+                telefono=request.POST["telefono"],
+                email=request.POST["email"],
+                fechaNacimiento=request.POST["fechaNacimiento"],
+                nombreContacto=request.POST["nombreContacto"],
+                telefonoContacto=request.POST["telefonoContacto"],
+                user=user,
+
+            )
+            return redirect('inicio-adm')
+
         else:
-            print("Error")
+            form = PacienteForm(request.POST)
     else:
         form= PacienteForm()
     context={
@@ -107,7 +136,7 @@ def pacientes(request, modal_status="hid"):
                 request, f"Se eliminò el paciente {paciente} exitosamente!"
             )
 
-            return redirect("login")
+            return redirect("inicio-adm")
 
         if request.POST["tipo"]=="editar":
             pk_paciente = request.POST["modal-pk"]
