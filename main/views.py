@@ -1,19 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,HttpResponse
 from django.views.defaults import page_not_found
+from django.contrib.auth import logout
 
-def login(request):
-    imagen= '/static/img/IMGprin.jfif'
-    context={
-        "imagen":imagen
-    }
-    return render(request,'login.html',context)
 
 def inicio(request):
-    context={}
+    context={
+
+    }
     return render(request,'index.html',context)
 
 def pacientes(request):
-    imagen= '/static/img/IMGprin.jfif'
+    imagen= '/static/img/img1.jpeg'
     context={
         "imagen":imagen
     }
@@ -37,5 +34,16 @@ def error_404(request,exception):
 def buscar(request):
     context={}
     return render(request,'Cita/buscarCita.html',context)
+
+# def loggedIn(request):
+#     if request.user.is_authenticated:
+#         respuesta:"Ingresado como"+ request.user.username
+#     else:
+#         respuesta:"No estas autenticado."
+#         return HttpResponse(respuesta)  
+
+def logout_user(request):
+    logout(request)
+    return redirect("registration/login.html")
 
 
