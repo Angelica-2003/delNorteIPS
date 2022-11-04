@@ -55,7 +55,7 @@ def pacientes_crear(request):
                 user=user,
 
             )
-            return redirect('inicio-adm')
+            return redirect('login')
 
         else:
             form = PacienteForm(request.POST)
@@ -133,7 +133,7 @@ def pacientes(request, modal_status="hid"):
 
             )
             messages.success(
-                request, f"Se eliminò el paciente {paciente} exitosamente!"
+                request, f"Se eliminò el paciente exitosamente!"
             )
 
             return redirect("inicio-adm")
@@ -147,9 +147,9 @@ def pacientes(request, modal_status="hid"):
                 form_update.save()
 
             messages.success(
-                request, f"Se editò el paciente {paciente} exitosamente!"
+                request, f"Se editò el paciente exitosamente!"
             )
-            return redirect("login")
+            return redirect("inicio-adm")
         
             
     context={

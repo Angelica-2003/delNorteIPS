@@ -25,7 +25,7 @@ from django.contrib.auth.views import LoginView as login
 handler404= error_404
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',login.as_view(),name='inicio'),
+    path('',login.as_view(),name='login'),
     path('inicio/',inicio,name='inicio-adm'),
     path('submenu/',submenu,name='submenu'),
     path('buscarUsuario/',listar,name='buscarUsuario'),
