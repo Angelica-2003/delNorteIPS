@@ -55,6 +55,9 @@ def pacientes_crear(request):
                 user=user,
 
             )
+            messages.success(
+                request, f"Se regitró el paciente exitosamente! el usuario es el numero de cedula y la contraseña es @ + la primer letra en mayuscula de su nombre, + la primer letra en mayuscula de su apellido y los ultimos cuatro numeros de su cedula; si desea cambiar su contraseña vaya al link de olvidó su contraseña"
+            )
             return redirect('login')
 
         else:
