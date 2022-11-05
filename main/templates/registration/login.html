@@ -13,7 +13,7 @@ position: absolute; margin-left: 40%; margin-top: 5%; opacity: 0.7; border-radiu
             <input type="submit" class="btn btn-primary btn-block" value="Ingresar">
         </div>
         <div class="Olvido-contraseña" style="margin-top: -50px; margin-left: 55px;">
-            <a href="" style="color: black;">Olvido su contraseña</a>
+            <a href="{% url 'password_reset' %}" style="color: black;">Olvido su contraseña</a>
         </div>
         <div class="Registrarse" style="margin-top: 20px; margin-left: 90px;">
             <a href="{% url 'pacientes-crear' %}" style="color: black;">Registrarse</a>

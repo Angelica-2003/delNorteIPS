@@ -21,11 +21,13 @@ from buscarUsuario.views import buscarUsuario
 
 from main.views import error_404, logout_user, submenu,listar,inicio
 from django.contrib.auth.views import LoginView as login
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+
 
 handler404= error_404
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',login.as_view(),name='inicio'),
+    path('',login.as_view(),name='login'),
     path('inicio/',inicio,name='inicio-adm'),
     path('submenu/',submenu,name='submenu'),
     path('buscarUsuario/',listar,name='buscarUsuario'),
@@ -38,6 +40,15 @@ urlpatterns = [
 
     
     path('logout/',logout_user,name='fin-sesion'),
+
+    path('reset/password_reset',PasswordResetView.as_view(),name='password_reset'),
+    path('reset/password_reset_done',PasswordResetDoneView.as_view(),name='password_reset_done'),
+    path('reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>.+)/$',PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
+    path('reset/done',PasswordResetCompleteView.as_view(),name='password_reset_complete'),
+    
+    
+
+    
 
 
 ]
