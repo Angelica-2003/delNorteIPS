@@ -98,7 +98,6 @@ DATABASES = {
         'PASSWORD': 'Unionmedicadelnorte',
         'HOST': 'db4free.net',
         'PORT': 3306,
-        
         }
     }
 
