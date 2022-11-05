@@ -152,7 +152,7 @@ LOGIN_REDIRECT_URL= 'inicio-adm'
 
 EMAIL_USE_TLS= True
 EMAIL_HOST= 'jorge.vargas36@misena.edu.co'
-EMAIL_PORT=25
+EMAIL_PORT= 587
 EMAIL_HOST_USER='jorge.vargas36@misena.edu.co'
 EMAIL_HOST_PASSWORD='cztshgscnxgvaoos'
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
