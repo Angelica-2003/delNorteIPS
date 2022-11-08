@@ -1,25 +1,25 @@
 {% extends 'partials/body.html' %}
-
+{% load static %}
 
 {% block contenido %}
 <div class="formulario" style="width: 20%;  width: 260px; height: 300px; background: #158f97;
 position: absolute; margin-left: 40%; margin-top: 5%; opacity: 0.7; border-radius: 7px; max-width: 50%;">
-    <form method="post" style="border: black;">
+    <form method="post" style="border:black; margin-top: 20px; margin-left: 25px;">
         {% csrf_token %}
         {{form.username}}
-
+<div style="margin-top: 10px;"></div>
         {{form.password}}
-        <div class="bten-ingresar" style="margin: 80PX; margin-top: 30px; margin-left: 85px;">
-            <input type="submit" class="btn btn-primary btn-block" value="Ingresar">
+        <div class="bten-ingresar" style="margin: 80PX; margin-top: 30px; margin-left: 65px;">
+            <input type="submit" class="btn btn-danger btn-block" value="Ingresar">
         </div>
-        <div class="Olvido-contraseña" style="margin-top: -50px; margin-left: 55px;">
+        <div class="Olvido-contraseña" style="margin-top: -50px; margin-left: 35px;">
             <a href="{% url 'password_reset' %}" style="color: black;">Olvido su contraseña</a>
         </div>
-        <div class="Registrarse" style="margin-top: 20px; margin-left: 90px;">
+        <div class="Registrarse" style="margin-top: 20px; margin-left: 70px;">
             <a href="{% url 'pacientes-crear' %}" style="color: black;">Registrarse</a>
         </div>
     
     </form>  
-    </div>
+    </div> 
+<img src="{% static 'img/IMGprin.jfif' %}" style=" background: main-color #158f97; box-shadow: #158f97; z-index: -1; width: 100%; height: 100%; " class="position-absolute bottom-0 end-0 " alt="">
 {% endblock contenido %}
- 
