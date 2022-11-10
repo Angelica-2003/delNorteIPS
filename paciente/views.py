@@ -24,7 +24,7 @@ from django.contrib.auth.hashers import make_password
 
 #     return render(request,"listar.html",context)
 
-@login_required(login_url="incio")
+#@login_required(login_url="inicio")
 def pacientes_crear(request):
     titulo="Crear Paciente"
     if request.method == "POST":

@@ -94,9 +94,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bddn_oficial',
-        'USER': 'userbddn',
-        'PASSWORD': 'Unionmedicadelnorte',
-        'HOST': 'db4free.net',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
         'PORT': 3306,
         }
     }
@@ -151,7 +151,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL= 'inicio-adm'
 
 EMAIL_USE_TLS= True
-EMAIL_HOST= 'jorge.vargas36@misena.edu.co'
+EMAIL_HOST='smtp.googlemail.com'
 EMAIL_PORT= 587
 EMAIL_HOST_USER='jorge.vargas36@misena.edu.co'
 EMAIL_HOST_PASSWORD='cztshgscnxgvaoos'

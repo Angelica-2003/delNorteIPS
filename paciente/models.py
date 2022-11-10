@@ -75,13 +75,13 @@ class Paciente(models.Model):
         CE='C.E', _('Cedula de Extranjeria')
         PP='P.P', _('Pasaporte')
     tipoDocumento=models.CharField(max_length=10, choices=TipoDocumento.choices, default=TipoDocumento.CC, verbose_name="Tipo de Documento")  # type: ignore
-    numDocumento=models.CharField(max_length=50, verbose_name="Numero de Documento")
+    numDocumento=models.CharField(max_length=50, verbose_name="Número de Documento")
     rh=models.CharField(max_length=45, verbose_name="Tipo de Sangre")
-    telefono=models.CharField(max_length=20, verbose_name="Telefono")
-    email=models.CharField(max_length=45, verbose_name="Correo Electronico")
+    telefono=models.CharField(max_length=20, verbose_name="Teléfono")
+    email=models.CharField(max_length=45, verbose_name="Correo Electrónico")
     fechaNacimiento=models.DateField(verbose_name="Fecha de Nacimiento", help_text="DD/MM/AAAA")
     nombreContacto=models.CharField(max_length=45, verbose_name="Nombre Contacto Familiar")
-    telefonoContacto=models.CharField(max_length=20, verbose_name="Telefono Contacto Familiar")
+    telefonoContacto=models.CharField(max_length=20, verbose_name="Teléfono Contacto Familiar")
     #clave=models.CharField(max_length=45, verbose_name="Clave de seguridad")
     class Estado(models.TextChoices):
         ACTIVO='1', _('Activo')
