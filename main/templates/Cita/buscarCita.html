@@ -1,4 +1,5 @@
 {% extends 'partials/body.html' %}
+{% load static %}
 
 {% block contenido %}
 
@@ -34,5 +35,6 @@
         </tbody>
     </table>
     </div>
+    <img src="{% static 'img/fondo-regis.jpeg' %}" style=" z-index: -1; width: 100%;height: 100%;" class="position-fixed bottom-0 end-0 " alt="">
     
 {% endblock contenido %}
