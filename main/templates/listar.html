@@ -1,12 +1,11 @@
 {% extends 'partials/body.html' %}
 {% load crispy_forms_tags %}
-
-
-
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
 {% block contenido %}
 <input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
 <div class="container">            
-    <table class="table" style="background-color:white; margin:1%;">
+    <table class="table" style="margin-right: 100px; margin-top: 40px; background-color: white;">
         <thead style="background-color: #abc241;">
         <tr>
             <th scope="col">Nombres</th>
@@ -16,7 +15,7 @@
             <th scope="col">RH</th>
             <th scope="col">Tel</th>
             <th scope="col">Email</th>
-            <th scope="col">Fecha Nacimiento</th>
+            <th scope="col">Fecha de nacimiento</th>
             <th scope="col">Nombre Familiar</th>
             <th scope="col">Tel Familiar</th>
             <th scope="col">Clave </th>
