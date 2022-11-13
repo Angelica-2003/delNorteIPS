@@ -1,3 +1,6 @@
-Body{
+.fondo{
     background-color: #158f97;
+    width: 100%;
+    height: 100%;
+    margin-top: 12px;
 }

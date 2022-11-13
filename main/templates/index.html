@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'style.cc' %}">
 
 {% block contenido %}
-
+<div class="fondo">
 <div class="Cerrar Sesion" style="margin-top: -20px; margin-left: 1200px;">
     <a href="{% url 'fin-sesion' %}" style="color: rgb(250, 249, 249);">Cerrar Sesión</a>
 </div>
@@ -105,15 +105,5 @@
                             <a href="{% url 'pacientes' %}" class="btn btn bg-danger" style="font-weight: bold; font-size: 100%; margin-left: 10px; margin-top: 1px;">Modificar, eliminar y Listar Usuario</a>
 
                             <a href="{% url 'servicios-crear' %}" class="btn btn bg-danger" style="font-weight: bold; font-size: 100%; margin-left: 5px; margin-top: 5px;">SERVICIOS</a>
-
-        
-
-                        
-
-
-                    
-            
-
-
-                            
+                        </div>                           
 {% endblock contenido %}

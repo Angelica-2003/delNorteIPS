@@ -1,4 +1,5 @@
 {% extends 'partials/body.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% block contenido %}
 <input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
@@ -72,6 +73,7 @@
         </tbody>
     </table>
     </div>
+    <img src="{% static 'img/fondo-regis.jpeg' %}" style=" z-index: -1; width: 100%;height: 100%;" class="position-fixed bottom-0 end-0 " alt="">
 
     
 {% endblock contenido %}
