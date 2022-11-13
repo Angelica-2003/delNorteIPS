@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from cita.models import Cita, Servicio
+from cita.models import Cita, Servicio, Agenda
 
 class CitaForm(ModelForm):
 
@@ -12,6 +12,11 @@ class CitaForm(ModelForm):
         exclude=['estado']
 
 class ServiciosForm(ModelForm):
+    class Meta:
+        model= Servicio
+        exclude=['estado']
+
+class AgendaForm(ModelForm):
     class Meta:
         model= Servicio
         exclude=['estado']
