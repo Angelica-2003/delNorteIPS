@@ -18,6 +18,6 @@ class ServiciosForm(ModelForm):
 
 class AgendaForm(ModelForm):
     class Meta:
-        model= Servicio
-        exclude=['estado']
+        model= Agenda
+        fields=('__all__')
         

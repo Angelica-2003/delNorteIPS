@@ -125,3 +125,21 @@ def agenda(request):
     }
 
     return render(request,"Cita/agenda.html",context)
+
+def agenda_crear(request):
+    titulo="Crear Agenda"
+    if request.method == "POST":
+        form= AgendaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('inicio-adm')
+        else:
+            print("Error")
+    else:
+        form= AgendaForm()
+    context={
+        "titulo":titulo,
+        "form":form
+        
+    }
+    return render(request,'Cita/agenda.html',context)
