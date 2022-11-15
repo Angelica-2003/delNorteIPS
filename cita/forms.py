@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from cita.models import Cita, Servicio, Agenda
+from cita.models import Cita, Servicio, Agenda, FechaDisponible
 
 class CitaForm(ModelForm):
 
@@ -19,5 +19,13 @@ class ServiciosForm(ModelForm):
 class AgendaForm(ModelForm):
     class Meta:
         model= Agenda
-        fields=('__all__')
-        
+        fields='__all__'
+
+class FechaDisponibleForm(forms.ModelForm):
+    """Form definition for FechaDisponible."""
+
+    class Meta:
+        """Meta definition for FechaDisponibleform."""
+
+        model = FechaDisponible
+        fields='__all__'

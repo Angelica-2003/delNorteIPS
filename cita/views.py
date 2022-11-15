@@ -1,145 +1,153 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from urllib.request import Request
-from cita.forms import CitaForm, ServiciosForm, AgendaForm
+from cita.forms import CitaForm, ServiciosForm, AgendaForm, FechaDisponibleForm
 from cita.models import Cita, Servicio, Agenda
-
+from datetime import datetime
 # Create your views here.
 
+
 def cita(request):
-    titulo="Cita"
-    cita= Cita.objects.all()
-    context={
-        'titulo':titulo,
-        'cita':cita
-        
+    titulo = "Cita"
+    cita = Cita.objects.all()
+    context = {
+        'titulo': titulo,
+        'cita': cita
+
     }
 
-    return render(request,"Cita/cita.html",context)
+    return render(request, "Cita/cita.html", context)
+
 
 def cita_crear(request):
-    titulo="Agenda tu Cita"
+    titulo = "Agenda tu Cita"
+    servicios = Servicio.objects.all()
     if request.method == "POST":
-        form= CitaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('inicio-adm')
-        else:
-            print("Error")
+        print(request.POST)
+        return redirect('crear-agenda', pk=request.POST['servicio'])
     else:
-        form= CitaForm()
-    context={
-        "titulo":titulo,
-        "form":form
-        
+        form = FechaDisponibleForm()
+    context = {
+        "titulo": titulo,
+        "form": form,
+        "servicios": servicios
     }
-    return render(request,'Cita/cita.html',context)
+    return render(request, 'Cita/cita.html', context)
+
 
 def servicio(request):
-    titulo="Servicios"
-    servicios= Servicio.objects.all()
-    context={
-        'titulo':titulo,
-        'servicios':servicios
-        
+    titulo = "Servicios"
+    servicios = Servicio.objects.all()
+    context = {
+        'titulo': titulo,
+        'servicios': servicios
+
     }
 
-    return render(request,"Cita/servicios.html",context)
+    return render(request, "Cita/servicios.html", context)
+
 
 def servicios_crear(request):
-    titulo="Crear Servicio"
+    titulo = "Crear Servicio"
     if request.method == "POST":
-        form= ServiciosForm(request.POST)
+        form = ServiciosForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('inicio-adm')
         else:
             print("Error")
     else:
-        form= ServiciosForm()
-    context={
-        "titulo":titulo,
-        "form":form
-        
+        form = ServiciosForm()
+    context = {
+        "titulo": titulo,
+        "form": form
+
     }
-    return render(request,'Cita/servicios.html',context)
+    return render(request, 'Cita/servicios.html', context)
+
 
 def citas_listar(request):
-    titulo="Cita-listar"
-    citas= Cita.objects.all()
-    context={
-        'titulo':titulo,
-        'citas':citas
-        
+    titulo = "Cita-listar"
+    citas = Cita.objects.all()
+    context = {
+        'titulo': titulo,
+        'citas': citas
+
     }
 
-    return render(request,"Cita/buscarCita.html",context)
+    return render(request, "Cita/buscarCita.html", context)
+
 
 def modificar(request):
-    titulo="Modificar Cita"
-    citas= Cita.objects.all()
-    context={
-        'titulo':titulo,
-        'citas':citas
-        
+    titulo = "Modificar Cita"
+    citas = Cita.objects.all()
+    context = {
+        'titulo': titulo,
+        'citas': citas
+
     }
 
-    return render(request,'Cita/modificarCita.html',context)
+    return render(request, 'Cita/modificarCita.html', context)
+
 
 def citas_modificar(request, pk):
-    titulo="Modifica tu cita"
-    cita= Cita.objects.get(id=pk)
+    titulo = "Modifica tu cita"
+    cita = Cita.objects.get(id=pk)
     if request.method == "POST":
-        form= CitaForm(request.POST,instance=cita)
+        form = CitaForm(request.POST, instance=cita)
         if form.is_valid():
             form.save()
             return redirect('inicio-adm')
         else:
             print("Error al guardar")
     else:
-        form= CitaForm(instance=cita)
+        form = CitaForm(instance=cita)
 
-    context={
-        "titulo":titulo,
-        "form":form
-        
+    context = {
+        "titulo": titulo,
+        "form": form
+
     }
-    return render(request,'Cita/modificarCita.html',context)
+    return render(request, 'Cita/modificarCita.html', context)
+
 
 def citas_eliminar(request, pk):
-    titulo="Eliminar Cita"
-    pacientes= Cita.objects.all()
-    
-    
+    titulo = "Eliminar Cita"
+    pacientes = Cita.objects.all()
+
     Cita.objects.filter(id=pk).update(
-            estado= '0'
-        )
+        estado='0'
+    )
     return redirect("inicio-adm")
 
+
 def agenda(request):
-    titulo="Agenda"
-    Agendas= Agenda.objects.all()
-    context={
-        'titulo':titulo,
-        'agenda':agenda
-        
+    titulo = "Agenda"
+    agenda = Agenda.objects.all()
+    context = {
+        'titulo': titulo,
+        'agenda': agenda
+
     }
 
-    return render(request,"Cita/agenda.html",context)
+    return render(request, "Cita/agenda.html", context)
 
-def agenda_crear(request):
-    titulo="Crear Agenda"
-    if request.method == "POST":
-        form= AgendaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('inicio-adm')
-        else:
-            print("Error")
-    else:
-        form= AgendaForm()
-    context={
-        "titulo":titulo,
-        "form":form
-        
+
+def agenda_crear(request, pk, dia=None):
+    titulo = "Crear Agenda"
+    agendas = Agenda.objects.filter(fecha__servicio_id=int(
+        pk), fecha__fecha__gte=datetime.today())
+    if request.method == "POST" and 'form-fecha' in request.POST:
+        dia = request.POST['fecha']
+        return redirect('crear-agenda', pk=pk, dia=dia)
+    if request.method == "POST" and 'form-crear' in request.POST:
+        agenda = Agenda.objects.get(fecha_id=int(
+            dia), horaDisponible=int(request.POST['horaDisponible']))
+        cita = Cita.objects.create(
+            agenda_id=agenda.id
+        )
+    context = {
+        "titulo": titulo,
+        "agendas": agendas,
+        "dia": dia
     }
-    return render(request,'Cita/agenda.html',context)
+    return render(request, 'Cita/agenda.html', context)
