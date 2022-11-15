@@ -4,15 +4,28 @@
 
 {% block contenido %}
 
-<div style="width: 550px; background:#158f97d1; padding: 30px; margin: auto; margin-top: 46px;border-radius: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: white;box-shadow: 7px 13px 37px rgb(8, 8, 8);  class="container w-50 bg-white p-5 rounded-3 shadow">
+<div style="width: 550px; background:#158f97d1; padding: 30px; margin: auto; margin-top: 46px;border-radius: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: white;box-shadow: 7px 13px 37px rgb(8, 8, 8);"
+   >
     <h2>{{titulo}}</h2>
     <form action="" method="POST">
-        {{form|crispy}}
         {% csrf_token %}
-        <a href="{% url 'crear-agenda' %}" class="btn btn bg-success">Siguiente</a>
+        <div id="div_id_servicio" class="mb-3"> <label for="id_servicio" class="form-label requiredField">
+                Servicio<span class="asteriskField">*</span> </label> <select name="servicio" class="select form-select"
+                required="" id="id_servicio">
+                <option value="" selected="">---------</option>
 
-    
-    </form> </div>
-    <img src="{% static 'img/fondo-regis.jpeg' %}" style=" z-index: -1; width: 100%;height: 100%;" class="position-fixed bottom-0 end-0 " alt="">
+                {% for servicio in servicios %}
+                <option value="{{servicio.id}}">{{servicio.nombre}}</option>
+
+                {% endfor %}
+
+            </select> </div>
+        <input class="btn btn bg-success" type="submit" value="Siguiente">
+
+
+    </form>
+</div>
+<img src="{% static 'img/fondo-regis.jpeg' %}" style=" z-index: -1; width: 100%;height: 100%;"
+    class="position-fixed bottom-0 end-0 " alt="">
 
 {% endblock contenido %}
