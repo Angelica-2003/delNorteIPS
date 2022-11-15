@@ -4,14 +4,52 @@
 
 {% block contenido %}
 
-<div style="width: 550px; background:#158f97d1; padding: 30px; margin: auto; margin-top: 46px;border-radius: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: white;box-shadow: 7px 13px 37px rgb(8, 8, 8);  class="container w-50 bg-white p-5 rounded-3 shadow">
+<div style="width: 550px; background:#158f97d1; padding: 30px; margin: auto; margin-top: 46px;border-radius: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: white;box-shadow: 7px 13px 37px rgb(8, 8, 8);"  >
     <h2>{{titulo}}</h2>
-    <form action="" method="POST">
-        {{form|crispy}}
+    <h3> {{dia}} </h3>
+
+       
+    {% if dia == None %}
+    <form method="POST">
         {% csrf_token %}
-        <input class="btn btn bg-success" type="submit" value="Aceptar">
-    
-    </form> </div>
-    <img src="{% static 'img/fondo-regis.jpeg' %}" style=" z-index: -1; width: 100%;height: 100%;" class="position-fixed bottom-0 end-0 " alt="">
+
+        <div id="div_id_fecha" class="mb-3"> <label for="id_fecha" class="form-label requiredField">
+                Fechas Disponibles<span class="asteriskField">*</span> </label> <select name="fecha"
+                class="select form-select" required="" id="id_fecha">
+                <option value="" selected="">---------</option>
+                {% for agenda in agendas %}
+                <option value="{{agenda.fecha.id}}">{{agenda.fecha}}</option>
+
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-success" name="form-fecha">Seleccionar</button>
+    </form>
+    {% else %}
+    <form action="" method="POST">
+{% csrf_token %}
+    <div id="div_id_horaDisponible" class="mb-3"> <label for="id_horaDisponible" class="form-label requiredField">
+            Hora Disponible<span class="asteriskField">*</span> </label> <select name="horaDisponible"
+            class="select form-select" required="" id="id_horaDisponible">
+            <option value="" selected="">---------</option>
+            {% for agenda in agendas %}
+            <option value="{{agenda.horaDisponible.id}}">{{agenda.horaDisponible}}</option>
+
+            {% endfor %}
+
+        </select> </div>
+        <button class="btn btn-success" name="form-crear">Solicitar</button>
+
+    </form>
+
+    {% endif %}
+
+
+    {% csrf_token %}
+
+
+</div>
+<img src="{% static 'img/fondo-regis.jpeg' %}" style=" z-index: -1; width: 100%;height: 100%;"
+    class="position-fixed bottom-0 end-0 " alt="">
 
 {% endblock contenido %}
