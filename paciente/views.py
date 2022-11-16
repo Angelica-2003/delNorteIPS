@@ -41,7 +41,7 @@ def pacientes_crear(request):
                 user_group = User,
                 my_group = Group.objects.get(name='Usuario')
                 #pacientes.user.groups.clear()
-                my_group.user_set.add(pacientes.user)   # type: ignore
+                #my_group.user_set.add(pacientes.user)   # type: ignore
             else:
                 user=User.objects.get(username=request.POST["numDocumento"])
 

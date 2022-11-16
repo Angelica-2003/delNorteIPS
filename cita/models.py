@@ -44,4 +44,5 @@ class Cita(models.Model):
         INACTIVO='0', _('Inactivo')
     estado=models.BooleanField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO, verbose_name="Estado")  # type: ignore
     #funcionario=models.ForeignKey(funcionario, on_delete=models.CASCADE, verbose_name="Funcionario")
-    
+    def __str__(self)->str:
+        return "%s" %(self.agenda)
