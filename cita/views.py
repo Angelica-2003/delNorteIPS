@@ -145,6 +145,7 @@ def agenda_crear(request, pk, dia=None):
         cita = Cita.objects.create(
             agenda_id=agenda.id
         )
+        return redirect("login")
     context = {
         "titulo": titulo,
         "agendas": agendas,
