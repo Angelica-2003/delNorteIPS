@@ -7,6 +7,7 @@
     <table class="table" style="background-color:white; margin:1%;">
         <thead style="background-color: #abc241;">
         <tr>
+            <th scope="col">Id</th>
             <th scope="col">Servicio y fecha</th>
             <th scope="col">Hora Cita</th>
             <th scope="col">Estado</th>
@@ -23,8 +24,9 @@
             
             <tr>
             
-                {% if cita.agenda == user.get_username or user.groups.all.0 %}
+                {% if cita.id == user.get_username or user.groups.all.0 %}
             
+                <td>{{cita.id}}</td>
                 <td>{{cita.agenda}}</td>
                 <td>{{cita.agenda.horaDisponible}}</td>
                 <td>{{cita.estado}}</td>
