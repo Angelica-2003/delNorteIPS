@@ -3,6 +3,10 @@ from urllib.request import Request
 from cita.forms import CitaForm, ServiciosForm, AgendaForm, FechaDisponibleForm
 from cita.models import Cita, Servicio, Agenda
 from datetime import datetime
+
+from django.contrib import messages
+
+
 # Create your views here.
 
 
@@ -145,6 +149,9 @@ def agenda_crear(request, pk, dia=None):
         cita = Cita.objects.create(
             agenda_id=agenda.id
         )
+        messages.success(
+                request, f"Se agendó su cita exitosamente"
+            )
         return redirect("login")
     context = {
         "titulo": titulo,
