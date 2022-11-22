@@ -44,6 +44,6 @@ def buscar(request):
 
 def logout_user(request):
     logout(request)
-    return redirect("registration/login.html")
+    return redirect("login")
 
 

@@ -1,14 +1,12 @@
 from django import forms
 from django.forms import ModelForm
-from cita.models import Cita, Servicio
+from cita.models import Cita, Servicio, Agenda, FechaDisponible
 
 class CitaForm(ModelForm):
-    fechaCita=forms.DateField(
-    widget=forms.widgets.DateInput(attrs={'type':'date'})
-    )
-    horaCita=forms.TimeField(
-    widget=forms.widgets.TimeInput(attrs={'type':'time'})
-    )
+
+    #horaCita=forms.TimeField(
+    #widget=forms.widgets.TimeInput(attrs={'type':'time'})
+    #)
     class Meta:
         model= Cita
         exclude=['estado']
@@ -17,4 +15,17 @@ class ServiciosForm(ModelForm):
     class Meta:
         model= Servicio
         exclude=['estado']
-        
+
+class AgendaForm(ModelForm):
+    class Meta:
+        model= Agenda
+        fields='__all__'
+
+class FechaDisponibleForm(forms.ModelForm):
+    """Form definition for FechaDisponible."""
+
+    class Meta:
+        """Meta definition for FechaDisponibleform."""
+
+        model = FechaDisponible
+        fields='__all__'

@@ -1,25 +1,23 @@
 {% extends 'partials/body.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
-
-
-
 {% block contenido %}
 <input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
 <div class="container">            
-    <table class="table" style="background-color:white; margin:1%;">
+    <table class="table" style="margin-right: 100px; margin-top: 40px; background-color: white;">
         <thead style="background-color: #abc241;">
         <tr>
             <th scope="col">Nombres</th>
             <th scope="col">Apellidos</th>
-            <th scope="col">Tipo De Documento</th>
-            <th scope="col">Numero De Documento</th>
-            <th scope="col">Tipo de Sangre</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Correo Electronico</th>
-            <th scope="col">Fecha de Nacimiento</th>
-            <th scope="col">Nombre de Contacto Familiar</th>
-            <th scope="col">Telefono de Contacto Familiar</th>
-            <th scope="col">Clave de Seguridad</th>
+            <th scope="col">Tipo Doc</th>
+            <th scope="col">N Documento</th>
+            <th scope="col">RH</th>
+            <th scope="col">Tel</th>
+            <th scope="col">Email</th>
+            <th scope="col">Fecha de nacimiento</th>
+            <th scope="col">Nombre Familiar</th>
+            <th scope="col">Tel Familiar</th>
+            <th scope="col">Clave </th>
             <th scope="col">Estado</th>
             <th scope="col">Acciones</th>
 
@@ -29,9 +27,9 @@
         <tbody>
             
         {% for paciente in pacientes  %}
+        
+        {% if paciente.numDocumento == user.get_username or user.groups.all.0 %}
             <tr>
-                
-                
                 <td>{{paciente.nombres}}</td>
                 <td>{{paciente.apellidos}}</td>
                 <td>{{paciente.tipoDocumento}}</td>
@@ -64,11 +62,14 @@
                 </td>
 
                 
+                {% endif %}
             </tr>
             {% endfor %}
         </tbody>
     </table>
     </div>
+    <img src="{% static 'img/fondo-regis.jpeg' %}" style=" z-index: -1; width: 100%;height: 100%;" class="position-fixed bottom-0 end-0 " alt="">
+
     
 {% endblock contenido %}
     
