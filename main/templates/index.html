@@ -1,8 +1,9 @@
 {% extends 'partials/body.html' %}
 {% load static %}
+<link rel="stylesheet" href="{% static 'style.cc' %}">
 
 {% block contenido %}
-
+<div class="fondo">
 <div class="Cerrar Sesion" style="margin-top: -20px; margin-left: 1200px;">
     <a href="{% url 'fin-sesion' %}" style="color: rgb(250, 249, 249);">Cerrar Sesión</a>
 </div>
@@ -14,7 +15,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
             fill="currentColor" class="bi bi-calendar-date-fill" viewBox="0 0 16
             16" style="height: 200px;
-            width: 100px; margin-left: 250px; margin-top: -50px;">
+            width: 100px; margin-left: 140px; margin-top: -50px;">
             <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0
                 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zm5.402 9.746c.625 0 1.184-.484
                 1.184-1.18 0-.832-.527-1.23-1.16-1.23-.586 0-1.168.387-1.168
@@ -34,7 +35,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16
                     16" style="height: 300px;
-                    width: 100px; margin-left: 470px; margin-top: -248px;">
+                    width: 100px; margin-left: 370px; margin-top: -248px;">
                     <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464
                         1.464 0 0
                         1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987
@@ -52,7 +53,7 @@
                         1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
                     </svg>
                 </div>
-                <div style="width: 100px; margin-left: 760px; margin-top:
+                <div style="width: 100px; margin-left: 660px; margin-top:
                     -195px;">
                     <i class="bi bi-file-earmark-text-fill"></i>
                     <svg xmlns="http://www.w3.org/2000/svg" width="100"
@@ -67,7 +68,7 @@
                         </svg>
                     </div>
 
-                    <div style="width: 100px; margin-left: 970px;
+                    <div style="width: 100px; margin-left: 860px;
                                     margin-top: -100px;">
                                     <i class="bi bi-clipboard2-data-fill"></i>
                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +97,7 @@
                                             </svg>
                                         </div>
                                     </div>
-                    <div class="boton1" style="margin-top: 20px; margin-left: 240px;">
+                    <div class="boton1" style="margin-top: 20px; margin-left: 130px;">
                             <a href="{% url 'cita-crear' %}" class="btn btn bg-danger" style="font-weight: bold; font-size: 100%; margin-right: 40px;">Agendar Cita</a>
                         
                             <a href="{% url 'cita-listar' %}" class="btn btn bg-danger" style="font-weight: bold; font-size: 100%; margin-left: -30px;">Modificar, Buscar o Cancelar Cita</a>
@@ -104,15 +105,5 @@
                             <a href="{% url 'pacientes' %}" class="btn btn bg-danger" style="font-weight: bold; font-size: 100%; margin-left: 10px; margin-top: 1px;">Modificar, eliminar y Listar Usuario</a>
 
                             <a href="{% url 'servicios-crear' %}" class="btn btn bg-danger" style="font-weight: bold; font-size: 100%; margin-left: 5px; margin-top: 5px;">SERVICIOS</a>
-
-        
-
-                        
-
-
-                    
-            <img src="{% static 'img/img1.jpeg' %}" style=" z-index: -1; width: 100%;height: 100%;" class="position-fixed bottom-0 end-0 " alt="">
-
-
-                            
+                        </div>                           
 {% endblock contenido %}

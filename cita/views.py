@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from urllib.request import Request
-from cita.forms import CitaForm, ServiciosForm
-from cita.models import Cita, Servicio
+from cita.forms import CitaForm, ServiciosForm, AgendaForm
+from cita.models import Cita, Servicio, Agenda
 
 # Create your views here.
 
@@ -114,3 +114,32 @@ def citas_eliminar(request, pk):
             estado= '0'
         )
     return redirect("inicio-adm")
+
+def agenda(request):
+    titulo="Agenda"
+    Agendas= Agenda.objects.all()
+    context={
+        'titulo':titulo,
+        'agenda':agenda
+        
+    }
+
+    return render(request,"Cita/agenda.html",context)
+
+def agenda_crear(request):
+    titulo="Crear Agenda"
+    if request.method == "POST":
+        form= AgendaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('inicio-adm')
+        else:
+            print("Error")
+    else:
+        form= AgendaForm()
+    context={
+        "titulo":titulo,
+        "form":form
+        
+    }
+    return render(request,'Cita/agenda.html',context)

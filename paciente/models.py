@@ -91,3 +91,5 @@ class Paciente(models.Model):
     #nacionalidad=models.ForeignKey(Nacionalidad, on_delete=models.CASCADE, verbose_name="Nacionalidad")   
     #genero=models.ForeignKey(Genero, on_delete=models.CASCADE, verbose_name="Genero")
     user=models.ForeignKey(User, on_delete=models.CASCADE)
+    def __str__(self)->str:
+        return "%s" %(self.nombres)
