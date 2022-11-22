@@ -139,7 +139,7 @@ def agenda(request):
 def agenda_crear(request, pk, dia=None):
     titulo = "Crear Agenda"
     agendas = Agenda.objects.filter(fecha__servicio_id=int(
-        pk), fecha__fecha__gte=datetime.today())
+        pk), fecha__fecha__gte=datetime.today(),estado="1")
     if request.method == "POST" and 'form-fecha' in request.POST:
         dia = request.POST['fecha']
         return redirect('crear-agenda', pk=pk, dia=dia)
@@ -149,10 +149,12 @@ def agenda_crear(request, pk, dia=None):
         cita = Cita.objects.create(
             agenda_id=agenda.id
         )
+        agenda.estado="0" 
+        agenda.save()   
         messages.success(
                 request, f"Se agendó su cita exitosamente"
             )
-        return redirect("login")
+        return redirect("inicio-adm")
     context = {
         "titulo": titulo,
         "agendas": agendas,

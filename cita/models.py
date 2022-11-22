@@ -31,6 +31,10 @@ class Agenda(models.Model):
     fecha=models.ForeignKey(FechaDisponible, on_delete=models.CASCADE, verbose_name="Fechas Disponibles")
 
     horaDisponible=models.ForeignKey(HoraDisponible, on_delete=models.CASCADE, verbose_name="Hora Disponible")
+    class Estado(models.TextChoices):
+        ACTIVO='1', _('Activo')
+        INACTIVO='0', _('Inactivo')
+    estado=models.CharField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO, verbose_name="Estado")  # type: ignore
     def __str__(self)->str:
         return f"{self.fecha.servicio} {self.fecha.fecha}"
 
