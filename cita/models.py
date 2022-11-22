@@ -40,7 +40,7 @@ class Agenda(models.Model):
 
 class Cita(models.Model):
     agenda=models.ForeignKey(Agenda, on_delete=models.CASCADE, verbose_name="Fechas Disponibles")
-
+    paciente=models.CharField(max_length=45, verbose_name="Paciente")
     #horaCita=models.TimeField(verbose_name="Hora de la Cita")
     #costo=models.CharField(max_length=45, verbose_name="Precio de la Cita")
     class Estado(models.TextChoices):
