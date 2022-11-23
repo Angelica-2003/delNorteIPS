@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from datetime import date
-
+from paciente.models import Paciente
 # Create your models here.
 
 class Servicio(models.Model):
@@ -38,9 +38,12 @@ class Agenda(models.Model):
     def __str__(self)->str:
         return f"{self.fecha.servicio} {self.fecha.fecha}"
 
+
+
 class Cita(models.Model):
     agenda=models.ForeignKey(Agenda, on_delete=models.CASCADE, verbose_name="Fechas Disponibles")
-    paciente=models.CharField(max_length=45, verbose_name="Paciente")
+    paciente=models.ForeignKey(Paciente, on_delete=models.CASCADE, verbose_name="Paciente")
+
     #horaCita=models.TimeField(verbose_name="Hora de la Cita")
     #costo=models.CharField(max_length=45, verbose_name="Precio de la Cita")
     class Estado(models.TextChoices):

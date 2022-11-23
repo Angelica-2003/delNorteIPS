@@ -3,6 +3,7 @@ from urllib.request import Request
 from cita.forms import CitaForm, ServiciosForm, AgendaForm, FechaDisponibleForm
 from cita.models import Cita, Servicio, Agenda
 from datetime import datetime
+from paciente.models import Paciente
 
 from django.contrib import messages
 
@@ -147,7 +148,8 @@ def agenda_crear(request, pk, dia=None):
         agenda = Agenda.objects.get(fecha_id=int(
             dia), horaDisponible=int(request.POST['horaDisponible']))
         cita = Cita.objects.create(
-            agenda_id=agenda.id
+            agenda_id=agenda.id,
+            paciente=Paciente.objects.get(user_id=request.user.id)
         )
         agenda.estado="0" 
         agenda.save()   
