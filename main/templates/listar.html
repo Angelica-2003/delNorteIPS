@@ -17,9 +17,11 @@
             <th scope="col">Fecha de nacimiento</th>
             <th scope="col">Nombre Familiar</th>
             <th scope="col">Tel Familiar</th>
-            <th scope="col">Clave </th>
             <th scope="col">Estado</th>
+            <th scope="col">Grupo</th>
             <th scope="col">Acciones</th>
+
+
 
         
         </tr>
@@ -40,8 +42,8 @@
                 <td>{{paciente.fechaNacimiento}}</td>
                 <td>{{paciente.nombreContacto}}</td>
                 <td>{{paciente.telefonoContacto}}</td>
-                <td>{{paciente.clave}}</td>
                 <td>{{paciente.estado}}</td>
+                <td>{{paciente.user.groups.all.0}}</td>
                 <td>
                     <div class="row">
                         <form action="" method="POST" class="col-4">
