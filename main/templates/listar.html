@@ -4,7 +4,7 @@
 {% block contenido %}
 <input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
 <div class="container">            
-    <table class="table" style="margin-right: 100px; margin-top: 40px; background-color: white;">
+    <table class="table" style="margin-right: 100px; margin-top: -20px; background-color: white;">
         <thead style="background-color: #abc241;">
         <tr>
             <th scope="col">Nombres</th>
@@ -30,7 +30,7 @@
             
         {% for paciente in pacientes  %}
         
-        {% if paciente.numDocumento == user.get_username or user.groups.all.0 %}
+        {% if paciente.numDocumento == user.get_username or user.groups.all.1 %}
             <tr>
                 <td>{{paciente.nombres}}</td>
                 <td>{{paciente.apellidos}}</td>
