@@ -101,6 +101,9 @@ def citas_modificar(request, pk):
         form = CitaForm(request.POST, instance=cita)
         if form.is_valid():
             form.save()
+            messages.success(
+                request, f"Se modificó su cita exitosamente"
+            )
             return redirect('inicio-adm')
         else:
             print("Error al guardar")
@@ -122,6 +125,9 @@ def citas_eliminar(request, pk):
     Cita.objects.filter(id=pk).update(
         estado='0'
     )
+    messages.success(
+                request, f"Se eliminó su cita exitosamente"
+            )
     return redirect("inicio-adm")
 
 
