@@ -9,7 +9,8 @@ class CitaForm(ModelForm):
     #)
     class Meta:
         model= Cita
-        exclude=['estado,paciente']
+        exclude=['estado','paciente']
+        
 
 class ServiciosForm(ModelForm):
     class Meta:
@@ -19,7 +20,7 @@ class ServiciosForm(ModelForm):
 class AgendaForm(ModelForm):
     class Meta:
         model= Agenda
-        fields='__all__'
+        exclude=['estado']
 
 class FechaDisponibleForm(forms.ModelForm):
     """Form definition for FechaDisponible."""
