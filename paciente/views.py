@@ -140,7 +140,7 @@ def pacientes(request, modal_status="hid"):
 
             )
             messages.success(
-                request, f"Se eliminò el paciente exitosamente!"
+                request, f"Se eliminó el paciente exitosamente!"
             )
 
             return redirect("inicio-adm")
@@ -154,7 +154,7 @@ def pacientes(request, modal_status="hid"):
                 form_update.save()
 
             messages.success(
-                request, f"Se editò el paciente exitosamente!"
+                request, f"Se editó el paciente exitosamente!"
             )
             return redirect("inicio-adm")
         

@@ -41,7 +41,7 @@ class Agenda(models.Model):
 
 
 class Cita(models.Model):
-    agenda=models.ForeignKey(Agenda, on_delete=models.CASCADE, verbose_name="Fechas Disponibles")
+    agenda=models.ForeignKey(Agenda, on_delete=models.CASCADE, verbose_name="Servicio y Fechas Disponibles")
     paciente=models.ForeignKey(Paciente, on_delete=models.CASCADE, verbose_name="Paciente")
 
     #horaCita=models.TimeField(verbose_name="Hora de la Cita")

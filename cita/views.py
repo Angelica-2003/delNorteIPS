@@ -93,47 +93,31 @@ def modificar(request):
 
     return render(request, 'Cita/modificarCita.html', context)
 
-def cita_crear_modificar(request):
-    titulo = "Modifica tu Cita"
-    servicios = Servicio.objects.all()
-    if request.method == "POST":
-        print(request.POST)
-        return redirect('crear-agenda', pk=request.POST['servicio'])
-    else:
-        form = FechaDisponibleForm()
-    context = {
-        "titulo": titulo,
-        "form": form,
-        "servicios": servicios
-    }
-    return render(request, 'Cita/modificarCita.html', context)
 
 
 def citas_modificar(request, pk,dia=None):
     titulo = "Modifica tu cita"
-    agendas = Agenda.objects.filter(fecha__servicio_id=int(
-        pk), fecha__fecha__gte=datetime.today(),estado="1")
-    if request.method == "POST" and 'form-fecha' in request.POST:
-        dia = request.POST['fecha']
-        return redirect('crear-agenda', pk=pk, dia=dia)
-    if request.method == "POST" and 'form-crear' in request.POST:
-        agenda = Agenda.objects.get(fecha_id=int(
-            dia), horaDisponible=int(request.POST['horaDisponible']))
-        cita = Cita.objects.create(
-            agenda_id=agenda.id,
-            paciente=Paciente.objects.get(user_id=request.user.id)
-        )
-        agenda.estado="0" 
-        agenda.save()   
-        messages.success(
-                request, f"Se agendó su cita exitosamente"
+    cita =Cita.objects.get(id=pk)
+    if request.method == "POST":
+        form= CitaForm(request.POST,instance=cita)
+        if form.is_valid():
+            form.save
+            messages.success(
+                request, f"Se modificó su cita exitosamente"
             )
-        return redirect("inicio-adm")
-    context = {
-        "titulo": titulo,
-        "agendas": agendas,
-        "dia": dia
+            return redirect('inicio-adm')
+        else:
+            print("Error al guardar")
+
+    else:
+        form=CitaForm(instance=cita)
+
+        context={
+        "titulo":titulo,
+        "form":form
+        
     }
+
     return render(request, 'Cita/modificarCita.html', context)
 
 
