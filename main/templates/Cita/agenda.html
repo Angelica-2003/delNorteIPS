@@ -9,10 +9,10 @@
 
 <div style="width: 550px; background:#158f97d1; padding: 30px; margin: auto; margin-top: 46px;border-radius: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: white;box-shadow: 7px 13px 37px rgb(8, 8, 8);"  >
     <h2>{{titulo}}</h2>
-    <h3> {{dia}} </h3>
+
 
        
-    {% if dia == None %}
+    {% if fecha == None %}
     <form method="POST">
         {% csrf_token %}
 
@@ -21,7 +21,7 @@
                 class="select form-select" required="" id="id_fecha">
                 <option value="" selected="">---------</option>
                 {% for agenda in agendas %}
-                <option value="{{agenda.fecha.id}}">{{agenda.fecha}}</option>
+                <option value="{{agenda|date:'Y-m-d'}}">{{agenda}}</option>
 
                 {% endfor %}
             </select>
@@ -35,8 +35,8 @@
             Hora Disponible<span class="asteriskField">*</span> </label> <select name="horaDisponible"
             class="select form-select" required="" id="id_horaDisponible">
             <option value="" selected="">---------</option>
-            {% for agenda in agendas %}
-            <option value="{{agenda.horaDisponible.id}}">{{agenda.horaDisponible}}</option>
+            {% for fechaH in fechas %}
+            <option value="{{fechaH.horaDisponible.id}}">{{fechaH.horaDisponible}}</option>
 
             {% endfor %}
 
