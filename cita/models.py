@@ -36,7 +36,7 @@ class Agenda(models.Model):
         INACTIVO='0', _('Inactivo')
     estado=models.CharField(max_length=1,choices=Estado.choices,default=Estado.ACTIVO, verbose_name="Estado")  # type: ignore
     def __str__(self)->str:
-        return f"{self.fecha.servicio} {self.fecha.fecha}"
+        return f"{self.fecha.servicio} {self.fecha.fecha} {self.id}"
 
 
 
