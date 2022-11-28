@@ -4,7 +4,7 @@ from cita.forms import CitaForm, ServiciosForm, AgendaForm, FechaDisponibleForm
 from cita.models import Cita, Servicio, Agenda
 from datetime import datetime
 from paciente.models import Paciente
-
+from datetime import datetime
 from django.contrib import messages
 
 
@@ -146,16 +146,22 @@ def agenda(request):
     return render(request, "Cita/agenda.html", context)
 
 
-def agenda_crear(request, pk, dia=None):
-    titulo = "Crear Agenda"
-    agendas = Agenda.objects.filter(fecha__servicio_id=int(
-        pk), fecha__fecha__gte=datetime.today(),estado="1")
+def agenda_crear(request, pk, fecha=None):
+    servicio= Servicio.objects.get(id=pk)
+    titulo = f"Agendar Cita para {servicio}"
+    agendas = Agenda.objects.all().filter(fecha__servicio_id=int(
+      pk), fecha__fecha__gte=datetime.today(),estado="1").values_list('fecha__fecha',flat=True).distinct()
+    fechas=None
+    if fecha:
+      
+        fechas= Agenda.objects.filter(fecha__fecha=fecha,fecha__servicio_id=int(
+      pk))
     if request.method == "POST" and 'form-fecha' in request.POST:
-        dia = request.POST['fecha']
-        return redirect('crear-agenda', pk=pk, dia=dia)
+        fecha = request.POST['fecha']
+        return redirect('crear-agenda', pk=pk, fecha=fecha)
     if request.method == "POST" and 'form-crear' in request.POST:
-        agenda = Agenda.objects.get(fecha_id=int(
-            dia), horaDisponible=int(request.POST['horaDisponible']))
+
+        agenda = Agenda.objects.get(fecha__fecha=fecha, horaDisponible=int(request.POST['horaDisponible']))
         cita = Cita.objects.create(
             agenda_id=agenda.id,
             paciente=Paciente.objects.get(user_id=request.user.id)
@@ -169,6 +175,7 @@ def agenda_crear(request, pk, dia=None):
     context = {
         "titulo": titulo,
         "agendas": agendas,
-        "dia": dia
+        "fecha": fecha,
+        "fechas":fechas
     }
     return render(request, 'Cita/agenda.html', context)

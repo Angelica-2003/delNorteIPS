@@ -9,7 +9,7 @@ urlpatterns = [
     path('crear/',cita_crear,name='cita-crear'),
     path('servicio/',servicios_crear,name='servicios-crear'),
     path('listar/cita/',citas_listar,name='cita-listar'),
-    path('agendar/<str:pk>/<str:dia>/',agenda_crear,name='crear-agenda'),
+    path('agendar/<str:pk>/<str:fecha>/',agenda_crear,name='crear-agenda'),
     path('agendar/<str:pk>/',agenda_crear,name='crear-agenda'),
 
     path('modificar/<int:pk>/',citas_modificar,name='citas-modificar'),
