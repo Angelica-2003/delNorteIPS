@@ -4,7 +4,7 @@
 
 {% block contenido %}
 <div class="Cerrar Sesion" style="margin-top: -20px; margin-left: 1270px;">
-    <a href="{% url 'fin-sesion' %}" style="color: rgb(243, 239, 239); font-weight: bold;font-size: 100%;">HOME</a>
+    <a href="{% url 'login' %}" style="color: rgb(243, 239, 239); font-weight: bold;font-size: 100%;">HOME</a>
 </div>
 
 <div style="width: 550px; background:#158f97d1; padding: 30px; margin: auto; margin-top: 46px;border-radius: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: white;box-shadow: 7px 13px 37px rgb(8, 8, 8);  class="container w-50 bg-white p-5 rounded-3 shadow"> 
@@ -12,6 +12,8 @@
     <form action="" method="POST">
         {{form|crispy}}
         {% csrf_token %}
+        
+        <input id="chkDisclaimer2" name="chkDisclaimer2" type="checkbox" value="" data-toggle="tooltip" data-placement="top" data-original-title="" title=""><P>Aceptar<a href="terminosyc.html" style="color:black;"> Terminos y condiciones</a></P>
         <button class="btn btn bg-success btn-block" name="form-crear">Registrarse</button>
     
     </form> </div>
