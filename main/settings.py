@@ -10,8 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+from email.message import Message
 import os
+
 from pathlib import Path
+from django.contrib.messages import constants as messages_de_error
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -159,3 +162,14 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'jorge.vargas36@misena.edu.co'
 EMAIL_HOST_PASSWORD = 'cztshgscnxgvaoos'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+MESSAGE_TAGS={
+    messages_de_error.DEBUG: 'debug',
+    messages_de_error.INFO: 'info',
+    messages_de_error.SUCCESS: 'success',
+    messages_de_error.WARNING: 'warning',
+    messages_de_error.ERROR: 'danger',
+    
+    
+
+}
