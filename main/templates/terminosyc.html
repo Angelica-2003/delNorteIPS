@@ -1,6 +1,10 @@
 {% extends 'partials/body.html' %}
 {% load static %}
 
-<h1>Esta pagina web es propiedad y esta operada por la clínica UNION MEDICA DEL NORTE. Estos Términos establecen los términos y condiciones bajo las cuales tu puedes usar nuestra página web y servicios ofrecidos por nosotros. Esta página web ofrece a los visitantes un formulario de registro. Al acceder o usar la página web de nuestra clinica, usted acepta que ha leído, entendido y aceptado estar sujeto a estos terminos.</h1>
 
-<a href="{% url 'pacientes-crear' %}"><button class="btn btn-success">Acepto</button></a>
+{% block contenido %}
+<h1>Esta pagina web es propiedad y esta operada por la clínica UNION MEDICA DEL NORTE. Estos Términos establecen los términos y condiciones bajo las cuales tu puedes usar nuestra página web y servicios ofrecidos por nosotros. Esta página web ofrece a los visitantes un formulario de registro. Al acceder o usar la página web de nuestra clinica, usted acepta que ha leído, entendido y aceptado estar sujeto a estos terminos.</h1>
+    
+{% endblock contenido %}
+    
+

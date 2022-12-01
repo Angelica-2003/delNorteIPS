@@ -72,7 +72,11 @@ def servicios_crear(request):
 
 def citas_listar(request):
     titulo = "Cita-listar"
-    citas = Cita.objects.all()
+    if request.user.groups.filter(name="Administrador").exists():
+        citas = Cita.objects.all()
+    else:
+        citas = Cita.objects.filter(paciente__numDocumento=request.user.username)
+
     context = {
         'titulo': titulo,
         'citas': citas
@@ -155,7 +159,7 @@ def agenda_crear(request, pk, fecha=None):
     if fecha:
       
         fechas= Agenda.objects.filter(fecha__fecha=fecha,fecha__servicio_id=int(
-      pk))
+      pk),estado="1")
     if request.method == "POST" and 'form-fecha' in request.POST:
         fecha = request.POST['fecha']
         return redirect('crear-agenda', pk=pk, fecha=fecha)

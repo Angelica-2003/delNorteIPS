@@ -28,7 +28,7 @@
             
             <tr>
             
-                {% if cita.paciente.numDocumento == user.get_username or user.groups.all.1 %}
+                {% if cita.paciente.numDocumento == user.get_username or user.groups.all.0 %}
             
                 <td>{{cita.id}}</td>
                 <td>{{cita.agenda}}</td>

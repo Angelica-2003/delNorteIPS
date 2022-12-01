@@ -77,8 +77,9 @@ def pacientes_crear(request):
 
 
 def pacientes(request, modal_status="hid"):
-    titulo="Crear Pacientes"
+    titulo="Crear Pacientes"   
     pacientes= Paciente.objects.filter(estado="1")
+    
 
     ###### Cuerpo del modal ##########
     modal_title=""
@@ -174,7 +175,21 @@ def pacientes(request, modal_status="hid"):
         "form_update":form_update
         
     }
+
+    
     return render(request,'listar.html',context)
+
+def pacientes_terminos(request):
+    titulo="Terminos y condiciones"
+    pacientes= Paciente.objects.all()
+    context={
+    'titulo':titulo,
+    'pacientes':pacientes
+        
+    }
+
+    return render(request,"terminosyc.html",context)
+
 
 
 

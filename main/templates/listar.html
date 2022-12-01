@@ -33,7 +33,7 @@
             
         {% for paciente in pacientes  %}
         
-        {% if paciente.numDocumento == user.get_username or user.groups.all.0.1 %}
+        {% if paciente.numDocumento == user.get_username or user.groups.all.0 %}
             <tr>
                 <td>{{paciente.nombres}}</td>
                 <td>{{paciente.apellidos}}</td>
