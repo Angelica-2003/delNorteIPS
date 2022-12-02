@@ -129,8 +129,12 @@ def citas_eliminar(request, pk):
     titulo = "Eliminar Cita"
     pacientes = Cita.objects.all()
 
-    Cita.objects.filter(id=pk).update(
+    cita=Cita.objects.filter(id=pk).update(
         estado='0'
+    )
+    numero=Cita.objects.get(id=pk).agenda.id
+    agenda=Agenda.objects.filter(id=numero).update(
+        estado='1'
     )
     messages.success(
                 request, f"Se eliminó su cita exitosamente"
