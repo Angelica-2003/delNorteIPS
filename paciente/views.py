@@ -79,6 +79,11 @@ def pacientes_crear(request):
 def pacientes(request, modal_status="hid"):
     titulo="Crear Pacientes"   
     pacientes= Paciente.objects.filter(estado="1")
+    if request.user.groups.filter(name="Administrador").exists():
+        pacientes = Paciente.objects.all()
+    else:
+        pacientes = Paciente.objects.filter(numDocumento=request.user.username)
+
     
 
     ###### Cuerpo del modal ##########
