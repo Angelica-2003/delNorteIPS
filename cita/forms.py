@@ -9,7 +9,7 @@ class CitaForm(ModelForm):
     #)
     class Meta:
         model= Cita
-        exclude=['estado']
+        exclude=['estado,paciente']
 
 class ServiciosForm(ModelForm):
     class Meta:

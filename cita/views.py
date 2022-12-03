@@ -3,6 +3,11 @@ from urllib.request import Request
 from cita.forms import CitaForm, ServiciosForm, AgendaForm, FechaDisponibleForm
 from cita.models import Cita, Servicio, Agenda
 from datetime import datetime
+from paciente.models import Paciente
+
+from django.contrib import messages
+
+
 # Create your views here.
 
 
@@ -135,7 +140,7 @@ def agenda(request):
 def agenda_crear(request, pk, dia=None):
     titulo = "Crear Agenda"
     agendas = Agenda.objects.filter(fecha__servicio_id=int(
-        pk), fecha__fecha__gte=datetime.today())
+        pk), fecha__fecha__gte=datetime.today(),estado="1")
     if request.method == "POST" and 'form-fecha' in request.POST:
         dia = request.POST['fecha']
         return redirect('crear-agenda', pk=pk, dia=dia)
@@ -143,9 +148,15 @@ def agenda_crear(request, pk, dia=None):
         agenda = Agenda.objects.get(fecha_id=int(
             dia), horaDisponible=int(request.POST['horaDisponible']))
         cita = Cita.objects.create(
-            agenda_id=agenda.id
+            agenda_id=agenda.id,
+            paciente=Paciente.objects.get(user_id=request.user.id)
         )
-        return redirect("login")
+        agenda.estado="0" 
+        agenda.save()   
+        messages.success(
+                request, f"Se agendó su cita exitosamente"
+            )
+        return redirect("inicio-adm")
     context = {
         "titulo": titulo,
         "agendas": agendas,

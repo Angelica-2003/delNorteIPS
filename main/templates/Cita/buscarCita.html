@@ -11,6 +11,7 @@
             <th scope="col">Servicio y fecha</th>
             <th scope="col">Hora Cita</th>
             <th scope="col">Estado</th>
+            <th scope="col">Paciente</th>
             <th scope="col">Acciones</th>
 
 
@@ -24,12 +25,13 @@
             
             <tr>
             
-                {% if cita.id == user.get_username or user.groups.all.0 %}
+                {% if cita.paciente.numDocumento == user.get_username or user.groups.all.0 %}
             
                 <td>{{cita.id}}</td>
                 <td>{{cita.agenda}}</td>
                 <td>{{cita.agenda.horaDisponible}}</td>
                 <td>{{cita.estado}}</td>
+                <td>{{cita.paciente.numDocumento}}</td>
                 <td> <a href="{% url 'citas-modificar' cita.id %}" class="btn btn-primary" style="background-color:rgb(15, 96, 42)">Modificar</a><a href="{% url 'citas-eliminar' cita.id %}" class="btn btn-primary" style="background-color:rgb(184, 21, 21)">Borrar</a> </td>
         
             </tr>
