@@ -70,9 +70,9 @@ class Paciente(models.Model):
     nombres=models.CharField(max_length=45, verbose_name="nombres")
     apellidos=models.CharField(max_length=45, verbose_name="apellidos")
     class TipoDocumento(models.TextChoices):
-        CC='C.C', _('Cedula de Ciudadania')
+        CC='C.C', _('Cédula de Ciudadania')
         TI='T.I', _('Tarjeta de Identidad')
-        CE='C.E', _('Cedula de Extranjeria')
+        CE='C.E', _('Cédula de Extranjeria')
         PP='P.P', _('Pasaporte')
     tipoDocumento=models.CharField(max_length=10, choices=TipoDocumento.choices, default=TipoDocumento.CC, verbose_name="Tipo de Documento")  # type: ignore
     numDocumento=models.CharField(max_length=50, verbose_name="Número de Documento")
