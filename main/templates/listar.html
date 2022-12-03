@@ -2,9 +2,12 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block contenido %}
+<div class="Cerrar Sesion" style="margin-top: -20px; margin-left: 1270px;">
+    <a href="{% url 'fin-sesion' %}" style="color: rgb(243, 239, 239); font-weight: bold;font-size: 100%;">INICIO</a>
+</div>
 <input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
 <div class="container">            
-    <table class="table" style="margin-right: 100px; margin-top: 40px; background-color: white;">
+    <table class="table" style="margin-right: 100px; margin-top: -3px; background-color: white;">
         <thead style="background-color: #abc241;">
         <tr>
             <th scope="col">Nombres</th>
@@ -17,9 +20,11 @@
             <th scope="col">Fecha de nacimiento</th>
             <th scope="col">Nombre Familiar</th>
             <th scope="col">Tel Familiar</th>
-            <th scope="col">Clave </th>
             <th scope="col">Estado</th>
+            <th scope="col">Grupo</th>
             <th scope="col">Acciones</th>
+
+
 
         
         </tr>
@@ -40,8 +45,8 @@
                 <td>{{paciente.fechaNacimiento}}</td>
                 <td>{{paciente.nombreContacto}}</td>
                 <td>{{paciente.telefonoContacto}}</td>
-                <td>{{paciente.clave}}</td>
                 <td>{{paciente.estado}}</td>
+                <td>{{paciente.user.groups.all.0}}</td>
                 <td>
                     <div class="row">
                         <form action="" method="POST" class="col-4">

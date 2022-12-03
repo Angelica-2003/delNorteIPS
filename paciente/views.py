@@ -77,8 +77,14 @@ def pacientes_crear(request):
 
 
 def pacientes(request, modal_status="hid"):
-    titulo="Crear Pacientes"
+    titulo="Crear Pacientes"   
     pacientes= Paciente.objects.filter(estado="1")
+    if request.user.groups.filter(name="Administrador").exists():
+        pacientes = Paciente.objects.all()
+    else:
+        pacientes = Paciente.objects.filter(numDocumento=request.user.username)
+
+    
 
     ###### Cuerpo del modal ##########
     modal_title=""
@@ -140,7 +146,7 @@ def pacientes(request, modal_status="hid"):
 
             )
             messages.success(
-                request, f"Se eliminò el paciente exitosamente!"
+                request, f"Se eliminó el paciente exitosamente!"
             )
 
             return redirect("inicio-adm")
@@ -154,7 +160,7 @@ def pacientes(request, modal_status="hid"):
                 form_update.save()
 
             messages.success(
-                request, f"Se editò el paciente exitosamente!"
+                request, f"Se editó el paciente exitosamente!"
             )
             return redirect("inicio-adm")
         
@@ -174,7 +180,20 @@ def pacientes(request, modal_status="hid"):
         "form_update":form_update
         
     }
+
+    
     return render(request,'listar.html',context)
+
+def pacientes_terminos(request):
+    titulo="Terminos y condiciones"
+    pacientes= Paciente.objects.all()
+    context={
+    'titulo':titulo,
+    'pacientes':pacientes
+        
+    }
+
+    return render(request,"terminosyc.html",context)
 
 
 

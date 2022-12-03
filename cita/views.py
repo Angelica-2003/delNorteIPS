@@ -4,7 +4,7 @@ from cita.forms import CitaForm, ServiciosForm, AgendaForm, FechaDisponibleForm
 from cita.models import Cita, Servicio, Agenda
 from datetime import datetime
 from paciente.models import Paciente
-
+from datetime import datetime
 from django.contrib import messages
 
 
@@ -72,7 +72,11 @@ def servicios_crear(request):
 
 def citas_listar(request):
     titulo = "Cita-listar"
-    citas = Cita.objects.all()
+    if request.user.groups.filter(name="Administrador").exists():
+        citas = Cita.objects.all()
+    else:
+        citas = Cita.objects.filter(paciente__numDocumento=request.user.username)
+
     context = {
         'titulo': titulo,
         'citas': citas
@@ -94,24 +98,30 @@ def modificar(request):
     return render(request, 'Cita/modificarCita.html', context)
 
 
-def citas_modificar(request, pk):
+
+def citas_modificar(request, pk,dia=None):
     titulo = "Modifica tu cita"
-    cita = Cita.objects.get(id=pk)
+    cita =Cita.objects.get(id=pk)
     if request.method == "POST":
-        form = CitaForm(request.POST, instance=cita)
+        form= CitaForm(request.POST,instance=cita)
         if form.is_valid():
-            form.save()
+            form.save
+            messages.success(
+                request, f"Se modificó su cita exitosamente"
+            )
             return redirect('inicio-adm')
         else:
             print("Error al guardar")
+
     else:
-        form = CitaForm(instance=cita)
+        form=CitaForm(instance=cita)
 
-    context = {
-        "titulo": titulo,
-        "form": form
-
+        context={
+        "titulo":titulo,
+        "form":form
+        
     }
+
     return render(request, 'Cita/modificarCita.html', context)
 
 
@@ -119,9 +129,16 @@ def citas_eliminar(request, pk):
     titulo = "Eliminar Cita"
     pacientes = Cita.objects.all()
 
-    Cita.objects.filter(id=pk).update(
+    cita=Cita.objects.filter(id=pk).update(
         estado='0'
     )
+    numero=Cita.objects.get(id=pk).agenda.id
+    agenda=Agenda.objects.filter(id=numero).update(
+        estado='1'
+    )
+    messages.success(
+                request, f"Se eliminó su cita exitosamente"
+            )
     return redirect("inicio-adm")
 
 
@@ -137,16 +154,22 @@ def agenda(request):
     return render(request, "Cita/agenda.html", context)
 
 
-def agenda_crear(request, pk, dia=None):
-    titulo = "Crear Agenda"
-    agendas = Agenda.objects.filter(fecha__servicio_id=int(
-        pk), fecha__fecha__gte=datetime.today(),estado="1")
+def agenda_crear(request, pk, fecha=None):
+    servicio= Servicio.objects.get(id=pk)
+    titulo = f"Agendar Cita para {servicio}"
+    agendas = Agenda.objects.all().filter(fecha__servicio_id=int(
+      pk), fecha__fecha__gte=datetime.today(),estado="1").values_list('fecha__fecha',flat=True).distinct()
+    fechas=None
+    if fecha:
+      
+        fechas= Agenda.objects.filter(fecha__fecha=fecha,fecha__servicio_id=int(
+      pk),estado="1")
     if request.method == "POST" and 'form-fecha' in request.POST:
-        dia = request.POST['fecha']
-        return redirect('crear-agenda', pk=pk, dia=dia)
+        fecha = request.POST['fecha']
+        return redirect('crear-agenda', pk=pk, fecha=fecha)
     if request.method == "POST" and 'form-crear' in request.POST:
-        agenda = Agenda.objects.get(fecha_id=int(
-            dia), horaDisponible=int(request.POST['horaDisponible']))
+
+        agenda = Agenda.objects.get(fecha__fecha=fecha, horaDisponible=int(request.POST['horaDisponible']))
         cita = Cita.objects.create(
             agenda_id=agenda.id,
             paciente=Paciente.objects.get(user_id=request.user.id)
@@ -160,6 +183,7 @@ def agenda_crear(request, pk, dia=None):
     context = {
         "titulo": titulo,
         "agendas": agendas,
-        "dia": dia
+        "fecha": fecha,
+        "fechas":fechas
     }
     return render(request, 'Cita/agenda.html', context)
