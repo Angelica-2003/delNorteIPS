@@ -3,12 +3,21 @@
 {% load static %}
 
 {% block contenido %}
+<div class="Cerrar Sesion" style="margin-top: -20px; margin-left: 1270px;">
+    <a href="{% url 'login' %}" style="color: rgb(243, 239, 239); font-weight: bold;font-size: 100%;">HOME</a>
+</div>
 
 <div style="width: 550px; background:#158f97d1; padding: 30px; margin: auto; margin-top: 46px;border-radius: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;color: white;box-shadow: 7px 13px 37px rgb(8, 8, 8);  class="container w-50 bg-white p-5 rounded-3 shadow"> 
     <h2>{{titulo}}</h2>
     <form action="" method="POST">
         {{form|crispy}}
         {% csrf_token %}
+        <div>
+            <input id="chkDisclaimer3" name="chkDisclaimer3" type="checkbox" value="" data-toggle="tooltip" data-placement="top" data-fv-notempty="true" data-fv-notempty-message="Debes aceptar los términos y condiciones para completar el registro." data-fv-field="chkDisclaimer3" data-original-title="" title="">
+            <label for="chkDisclaimer3">
+        <P>Aceptar<a href="{% url 'pacientes-terminos' %}" style="color:black;"> Terminos y condiciones</a></P>
+    </label>
+    </div>
         <button class="btn btn bg-success btn-block" name="form-crear">Registrarse</button>
     
     </form> </div>

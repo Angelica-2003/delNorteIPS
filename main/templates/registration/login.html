@@ -9,6 +9,7 @@ position: absolute; margin-left: 40%; margin-top: 5%; opacity: 0.7; border-radiu
         {{form.username}}
 <div style="margin-top: 10px;"></div>
         {{form.password}}
+
         <div class="bten-ingresar" style="margin: 80PX; margin-top: 30px; margin-left: 65px;">
             <input type="submit" class="btn btn-danger btn-block" value="Ingresar">
         </div>
@@ -18,7 +19,17 @@ position: absolute; margin-left: 40%; margin-top: 5%; opacity: 0.7; border-radiu
         <div class="Registrarse" style="margin-top: 20px; margin-left: 70px;">
             <a href="{% url 'pacientes-crear' %}" style="color: black;">Registrarse</a>
         </div>
+        {% if messages %}
+        <ul class="messages">  
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{message.tag}}"{% endif %}>{{ mensaje }}</li>
+        
+            
+        {% endfor %} 
+    </ul>         
+        {% endif %}
     
+        
     </form>  
     </div> 
     <div class="triangulo position-fixed bottom-0 start-0 w-0 h-0" style="

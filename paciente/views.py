@@ -36,12 +36,9 @@ def pacientes_crear(request):
                 user.first_name=request.POST["nombres"].title()
                 user.last_name=request.POST["apellidos"].title()
                 user.email=request.POST["email"]
-                user.password=make_password("@" + request.POST['nombres'][0] + request.POST['apellidos'][0] + request.POST['numDocumento'][-4:])
+                user.password=make_password("@" + request.POST['nombres'][0] + request.POST['apellidos'][0] +"."+ request.POST['numDocumento'][-4:])
                 user.save()
-                user_group = User,
-                my_group = Group.objects.get(name='Usuario')
-                #pacientes.user.groups.clear()
-                #my_group.user_set.add(pacientes.user)   # type: ignore
+                
             else:
                 user=User.objects.get(username=request.POST["numDocumento"])
 
@@ -59,8 +56,11 @@ def pacientes_crear(request):
                 user=user,
             
             )
+            my_group = Group.objects.get(name='Usuario')
+            paciente.user.groups.clear()
+            my_group.user_set.add(paciente.user) 
             messages.success(
-                request, f"Se regitró el paciente exitosamente! el usuario es el número de cedula y la contraseña es @ + la primer letra en mayúscula de su nombre, + la primer letra en mayúscula de su apellido y los últimos cuatro números de su cedula; si desea cambiar su contraseña dele clic al link o boton de olvidó su contraseña"
+                request, f"Se regitró el paciente exitosamente! el usuario es el número de cedula y la contraseña es @ + la primer letra en mayúscula de su nombre, + la primer letra en mayúscula de su apellido + . y los últimos cuatro números de su cedula; si desea cambiar su contraseña dele clic al link o boton de olvidó su contraseña"
             )
             return redirect('login')
 
@@ -77,8 +77,14 @@ def pacientes_crear(request):
 
 
 def pacientes(request, modal_status="hid"):
-    titulo="Crear Pacientes"
+    titulo="Crear Pacientes"   
     pacientes= Paciente.objects.filter(estado="1")
+    if request.user.groups.filter(name="Administrador").exists():
+        pacientes = Paciente.objects.all()
+    else:
+        pacientes = Paciente.objects.filter(numDocumento=request.user.username)
+
+    
 
     ###### Cuerpo del modal ##########
     modal_title=""
@@ -140,7 +146,7 @@ def pacientes(request, modal_status="hid"):
 
             )
             messages.success(
-                request, f"Se eliminò el paciente exitosamente!"
+                request, f"Se eliminó el paciente exitosamente!"
             )
 
             return redirect("inicio-adm")
@@ -154,7 +160,7 @@ def pacientes(request, modal_status="hid"):
                 form_update.save()
 
             messages.success(
-                request, f"Se editò el paciente exitosamente!"
+                request, f"Se editó el paciente exitosamente!"
             )
             return redirect("inicio-adm")
         
@@ -174,7 +180,20 @@ def pacientes(request, modal_status="hid"):
         "form_update":form_update
         
     }
+
+    
     return render(request,'listar.html',context)
+
+def pacientes_terminos(request):
+    titulo="Terminos y condiciones"
+    pacientes= Paciente.objects.all()
+    context={
+    'titulo':titulo,
+    'pacientes':pacientes
+        
+    }
+
+    return render(request,"terminosyc.html",context)
 
 
 
