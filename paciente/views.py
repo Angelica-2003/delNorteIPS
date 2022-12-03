@@ -60,7 +60,7 @@ def pacientes_crear(request):
             paciente.user.groups.clear()
             my_group.user_set.add(paciente.user) 
             messages.success(
-                request, f"Se regitró el paciente exitosamente! el usuario es el número de cedula y la contraseña es @ + la primer letra en mayúscula de su nombre, + la primer letra en mayúscula de su apellido + . y los últimos cuatro números de su cedula; si desea cambiar su contraseña dele clic al link o boton de olvidó su contraseña"
+                request, f"Se regitró el paciente exitosamente! el usuario es el número de cédula y la contraseña es @ + la primera letra en mayúscula de su nombre, + la primera letra en mayúscula del apellido + . y los últimos cuatro números de su cédula; si desea cambiar su contraseña dar click al link en olvidó su contraseña"
             )
             return redirect('login')
 
