@@ -18,6 +18,16 @@
     
 </head>
 <body>
+
+    {% block stylesheet %}
+
+
+    {% endblock stylesheet %}
+
+    <link rel="stylesheet" href="{% static 'datatables-bs4/css/dataTables.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'datatables-responsive/css/responsive.bootstrap4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'datatables-buttons/css/buttons.bootstrap4.min.css' %}">
+
     {% include 'partials/header.html' %} 
     {% include 'partials/footer.html' %} 
     

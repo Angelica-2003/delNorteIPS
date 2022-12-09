@@ -1,32 +1,50 @@
 {% extends 'partials/body.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+
+{% block stylesheet %}
+<!-- DataTables -->
+<!-- <link rel="stylesheet" href="{% static 'datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{% static 'datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="{% static 'datatables-buttons/css/buttons.bootstrap4.min.css"> -->
+{% endblock stylesheet %}
+
 {% block contenido %}
 <div class="Cerrar Sesion" style="margin-top: -20px; margin-left: 1270px;">
     <a href="{% url 'fin-sesion' %}" style="color: rgb(243, 239, 239); font-weight: bold;font-size: 100%;">INICIO</a>
-</div>
-<input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
-<div class="container">            
-    <table class="table" style="margin-right: 100px; margin-top: -3px; background-color: white;">
-        <thead style="background-color: #abc241;">
+
+    <input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
+
+    <div class="card">
+        <div class="card-header;margin-top:1px; margin-left:10px;">
+            <h3 class="card-title">Listado de Clientes</h3>
+        </div>
+    
+        <div class="card-body">
+            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+    
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"
+                            aria-describedby="example1_info">
+                            <thead>
+
+           
         <tr>
-            <th scope="col">Nombres</th>
-            <th scope="col">Apellidos</th>
-            <th scope="col">Tipo Doc</th>
-            <th scope="col">N Documento</th>
-            <th scope="col">RH</th>
-            <th scope="col">Tel</th>
-            <th scope="col">Email</th>
-            <th scope="col">Fecha de nacimiento</th>
-            <th scope="col">Nombre Familiar</th>
-            <th scope="col">Tel Familiar</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Grupo</th>
-            <th scope="col">Acciones</th>
-
-
-
-        
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Tipo Doc</th>
+            <th>N Documento</th>
+            <th>RH</th>
+            <th>Tel</th>
+            <th>Email</th>
+            <th>Fecha de nacimiento</th>
+            <th>Nombre Familiar</th>
+            <th>Tel Familiar</th>
+            <th>Estado</th>
+            <th>Grupo</th>
+            <th>Acciones</th>
+            
         </tr>
         </thead>
         <tbody>
@@ -73,8 +91,42 @@
         </tbody>
     </table>
     </div>
-    <img src="{% static 'img/fondo-regis.jpeg' %}" style=" z-index: -1; width: 100%;height: 100%;" class="position-fixed bottom-0 end-0 " alt="">
+
 
     
 {% endblock contenido %}
+
+{% block javascript %}
+<!-- DataTables  & Plugins -->
+<script src="{% static 'datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'jszip/jszip.min.js' %}"></script>
+<script src="{% static 'pdfmake/pdfmake.min.js' %}"></script>
+<script src="{% static 'pdfmake/vfs_fonts.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+<!-- Page specific script -->
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": false, "lengthChange": false, "autoWidth": false,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": false,
+
+        });
+    });
+</script>
+{% endblock javascript %}
     
