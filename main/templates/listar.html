@@ -9,15 +9,17 @@
   <link rel="stylesheet" href="{% static 'datatables-buttons/css/buttons.bootstrap4.min.css"> -->
 {% endblock stylesheet %}
 
-{% block contenido %}
 <div class="Cerrar Sesion" style="margin-top: -20px; margin-left: 1270px;">
-    <a href="{% url 'fin-sesion' %}" style="color: rgb(243, 239, 239); font-weight: bold;font-size: 100%;">INICIO</a>
+    <a href="{% url 'fin-sesion' %}" style="color: rgb(8, 1, 1); font-weight: bold;font-size: 100%;">INICIO</a>
+
+{% block contenido %}
+
 
     <input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
 
     <div class="card">
-        <div class="card-header;margin-top:1px; margin-left:10px;">
-            <h3 class="card-title">Listado de Clientes</h3>
+        <div class="card-header">
+            <h3 class="card-title">Lista de Pacientes</h3>
         </div>
     
         <div class="card-body">
@@ -28,72 +30,86 @@
                         <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"
                             aria-describedby="example1_info">
                             <thead>
-
-           
-        <tr>
-            <th>Nombres</th>
-            <th>Apellidos</th>
-            <th>Tipo Doc</th>
-            <th>N Documento</th>
-            <th>RH</th>
-            <th>Tel</th>
-            <th>Email</th>
-            <th>Fecha de nacimiento</th>
-            <th>Nombre Familiar</th>
-            <th>Tel Familiar</th>
-            <th>Estado</th>
-            <th>Grupo</th>
-            <th>Acciones</th>
-            
-        </tr>
-        </thead>
-        <tbody>
-            
-        {% for paciente in pacientes  %}
-        
-        {% if paciente.numDocumento == user.get_username or user.groups.all.0 %}
-            <tr>
-                <td>{{paciente.nombres}}</td>
-                <td>{{paciente.apellidos}}</td>
-                <td>{{paciente.tipoDocumento}}</td>
-                <td>{{paciente.numDocumento}}</td>
-                <td>{{paciente.rh}}</td>
-                <td>{{paciente.telefono}}</td>
-                <td>{{paciente.email}}</td>
-                <td>{{paciente.fechaNacimiento}}</td>
-                <td>{{paciente.nombreContacto}}</td>
-                <td>{{paciente.telefonoContacto}}</td>
-                <td>{{paciente.estado}}</td>
-                <td>{{paciente.user.groups.all.0}}</td>
-                <td>
-                    <div class="row">
-                        <form action="" method="POST" class="col-4">
-                            {% csrf_token %}
-                            <input type="hidden" name="pk" value="{{paciente.id}}">
-                            <button class="btn btn-primary btn-block" name="form-editar">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                        </form>
-                        <form action="" class="col-4" method="POST">
-                            {% csrf_token %}
-                            <input type="hidden" name="pk" value="{{paciente.id}}">
-                            <button class="btn btn-danger btn-block" name="form-eliminar">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        </form>
+                                <tr>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Tipo Doc</th>
+                                    <th>N Documento</th>
+                                    <th>RH</th>
+                                    <th>Tel</th>
+                                    <th>Email</th>
+                                    <th>Fecha de nacimiento</th>
+                                    <th>Nombre Familiar</th>
+                                    <th>Tel Familiar</th>
+                                    <th>Estado</th>
+                                    <th>Grupo</th>
+                                    <th>Acciones</th>
+                                    
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                {% for paciente in pacientes  %}
+                                
+                                {% if paciente.numDocumento == user.get_username or user.groups.all.0 %}
+                                    <tr>
+                                        <td>{{paciente.nombres}}</td>
+                                        <td>{{paciente.apellidos}}</td>
+                                        <td>{{paciente.tipoDocumento}}</td>
+                                        <td>{{paciente.numDocumento}}</td>
+                                        <td>{{paciente.rh}}</td>
+                                        <td>{{paciente.telefono}}</td>
+                                        <td>{{paciente.email}}</td>
+                                        <td>{{paciente.fechaNacimiento}}</td>
+                                        <td>{{paciente.nombreContacto}}</td>
+                                        <td>{{paciente.telefonoContacto}}</td>
+                                        <td>{{paciente.estado}}</td>
+                                        <td>{{paciente.user.groups.all.0}}</td>
+                                        <td>
+                                            <div class="row">
+                                                <form action="" method="POST" class="col-4">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="pk" value="{{paciente.id}}">
+                                                    <button class="btn btn-primary btn-block" name="form-editar">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </form>
+                                                <form action="" class="col-4" method="POST">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="pk" value="{{paciente.id}}">
+                                                    <button class="btn btn-danger btn-block" name="form-eliminar">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                        
+                                        
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                        </tbody>
+                        
+                        </table>
                     </div>
-                </td>
-
+                </div>
                 
-                {% endif %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </div>
+        </div>
+    
     </div>
 
-
+           
+       
+            </table>
+        </div>
+    </div>
     
+</div>
+</div>
+
+</div>
+    </div>
 {% endblock contenido %}
 
 {% block javascript %}
