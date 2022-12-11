@@ -1,80 +1,148 @@
 {% extends 'partials/body.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block contenido %}
+
+{% block stylesheet %}
+<!-- DataTables -->
+<!-- <link rel="stylesheet" href="{% static 'datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="{% static 'datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="{% static 'datatables-buttons/css/buttons.bootstrap4.min.css"> -->
+{% endblock stylesheet %}
+
 <div class="Cerrar Sesion" style="margin-top: -20px; margin-left: 1270px;">
-    <a href="{% url 'fin-sesion' %}" style="color: rgb(243, 239, 239); font-weight: bold;font-size: 100%;">INICIO</a>
-</div>
-<input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
-<div class="container">            
-    <table class="table" style="margin-right: 100px; margin-top: -3px; background-color: white;">
-        <thead style="background-color: #abc241;">
-        <tr>
-            <th scope="col">Nombres</th>
-            <th scope="col">Apellidos</th>
-            <th scope="col">Tipo Doc</th>
-            <th scope="col">N Documento</th>
-            <th scope="col">RH</th>
-            <th scope="col">Tel</th>
-            <th scope="col">Email</th>
-            <th scope="col">Fecha de nacimiento</th>
-            <th scope="col">Nombre Familiar</th>
-            <th scope="col">Tel Familiar</th>
-            <th scope="col">Estado</th>
-            <th scope="col">Grupo</th>
-            <th scope="col">Acciones</th>
+    <a href="{% url 'fin-sesion' %}" style="color: rgb(8, 1, 1); font-weight: bold;font-size: 100%;">INICIO</a>
+
+{% block contenido %}
 
 
+    <input type="hidden" name="modal-status" id="modal-status" value="{{modal_status}}">
 
-        
-        </tr>
-        </thead>
-        <tbody>
-            
-        {% for paciente in pacientes  %}
-        
-        {% if paciente.numDocumento == user.get_username or user.groups.all.0 %}
-            <tr>
-                <td>{{paciente.nombres}}</td>
-                <td>{{paciente.apellidos}}</td>
-                <td>{{paciente.tipoDocumento}}</td>
-                <td>{{paciente.numDocumento}}</td>
-                <td>{{paciente.rh}}</td>
-                <td>{{paciente.telefono}}</td>
-                <td>{{paciente.email}}</td>
-                <td>{{paciente.fechaNacimiento}}</td>
-                <td>{{paciente.nombreContacto}}</td>
-                <td>{{paciente.telefonoContacto}}</td>
-                <td>{{paciente.estado}}</td>
-                <td>{{paciente.user.groups.all.0}}</td>
-                <td>
-                    <div class="row">
-                        <form action="" method="POST" class="col-4">
-                            {% csrf_token %}
-                            <input type="hidden" name="pk" value="{{paciente.id}}">
-                            <button class="btn btn-primary btn-block" name="form-editar">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                        </form>
-                        <form action="" class="col-4" method="POST">
-                            {% csrf_token %}
-                            <input type="hidden" name="pk" value="{{paciente.id}}">
-                            <button class="btn btn-danger btn-block" name="form-eliminar">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        </form>
-                    </div>
-                </td>
-
-                
-                {% endif %}
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    </div>
-    <img src="{% static 'img/fondo-regis.jpeg' %}" style=" z-index: -1; width: 100%;height: 100%;" class="position-fixed bottom-0 end-0 " alt="">
-
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Lista de Pacientes</h3>
+        </div>
     
+        <div class="card-body">
+            <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
+    
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table id="example1" class="table table-bordered table-striped dataTable dtr-inline"
+                            aria-describedby="example1_info">
+                            <thead>
+                                <tr>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Tipo Doc</th>
+                                    <th>N Documento</th>
+                                    <th>RH</th>
+                                    <th>Tel</th>
+                                    <th>Email</th>
+                                    <th>Fecha de nacimiento</th>
+                                    <th>Nombre Familiar</th>
+                                    <th>Tel Familiar</th>
+                                    <th>Estado</th>
+                                    <th>Grupo</th>
+                                    <th>Acciones</th>
+                                    
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                {% for paciente in pacientes  %}
+                                
+                                {% if paciente.numDocumento == user.get_username or user.groups.all.0 %}
+                                    <tr>
+                                        <td>{{paciente.nombres}}</td>
+                                        <td>{{paciente.apellidos}}</td>
+                                        <td>{{paciente.tipoDocumento}}</td>
+                                        <td>{{paciente.numDocumento}}</td>
+                                        <td>{{paciente.rh}}</td>
+                                        <td>{{paciente.telefono}}</td>
+                                        <td>{{paciente.email}}</td>
+                                        <td>{{paciente.fechaNacimiento}}</td>
+                                        <td>{{paciente.nombreContacto}}</td>
+                                        <td>{{paciente.telefonoContacto}}</td>
+                                        <td>{{paciente.estado}}</td>
+                                        <td>{{paciente.user.groups.all.0}}</td>
+                                        <td>
+                                            <div class="row">
+                                                <form action="" method="POST" class="col-4">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="pk" value="{{paciente.id}}">
+                                                    <button class="btn btn-primary btn-block" name="form-editar">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+                                                </form>
+                                                <form action="" class="col-4" method="POST">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="pk" value="{{paciente.id}}">
+                                                    <button class="btn btn-danger btn-block" name="form-eliminar">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                        
+                                        
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                        </tbody>
+                        
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    
+    </div>
+
+           
+       
+            </table>
+        </div>
+    </div>
+    
+</div>
+</div>
+
+</div>
+    </div>
 {% endblock contenido %}
+
+{% block javascript %}
+<!-- DataTables  & Plugins -->
+<script src="{% static 'datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.bootstrap4.min.js' %}"></script>
+<script src="{% static 'jszip/jszip.min.js' %}"></script>
+<script src="{% static 'pdfmake/pdfmake.min.js' %}"></script>
+<script src="{% static 'pdfmake/vfs_fonts.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'datatables-buttons/js/buttons.colVis.min.js' %}"></script>
+<!-- Page specific script -->
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": false, "lengthChange": false, "autoWidth": false,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": false,
+
+        });
+    });
+</script>
+{% endblock javascript %}
     
