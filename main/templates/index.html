@@ -4,7 +4,7 @@
 
 {% block contenido %}
 <div class="fondo">
-<div class="Cerrar Sesion" style="margin-top: -20px; margin-left: 1200px;">
+<div class="cerrar-sesion">
     <a href="{% url 'fin-sesion' %}" style="color: rgb(250, 249, 249);">Cerrar Sesión</a>
 </div>
 
@@ -69,12 +69,12 @@
                     </div>
 
                 </div>
-                    <div class="boton1" style="margin-top: 20px; margin-left: 170px;">
-                            <a href="{% url 'cita-crear' %}" class="btn btn bg-danger" style="color:beige;font-weight: bold; font-size: 100%; margin-left: 20px;">Agendar Cita</a>
+                    <div class="boton1">
+                            <a href="{% url 'cita-crear' %}" class="btn btn bg-danger btn-agendar">Agendar Cita</a>
                         
-                            <a href="{% url 'cita-listar' %}" class="btn btn bg-danger" style="color:beige;font-weight: bold; font-size: 100%; margin-left: 130px;">Buscar o Cancelar Cita</a>
+                            <a href="{% url 'cita-listar' %}" class="btn btn bg-danger btn-cancelar">Buscar o Cancelar Cita</a>
                 
-                            <a href="{% url 'pacientes' %}" class="btn btn bg-danger" style="color:beige;font-weight: bold; font-size: 100%; margin-left: 130px; margin-top: 3px;">Configuración Usuario</a>
+                            <a href="{% url 'pacientes' %}" class="btn btn bg-danger btn-listar">Configuración Usuario</a>
 
                         </div>                           
 {% endblock contenido %}

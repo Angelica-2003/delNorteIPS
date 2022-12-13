@@ -1,15 +1,20 @@
 {% load static %}
-        <div class="row align-items-center" style="margin-left: 5px;">
-            <div class="col-3 " style="margin-top: 10px;"><img width="30%; margin-top= 2px" src="{% static 'img/transparente logo.png' %}" alt=""></div>
-            <div class="col-6">
-            <h1 class="verde-letra; text-center" style="height: 60px; margin-top: -50px; font-family: arial bold; margin-top: 5px; font-size: 290%; color: #158f97; ">UNIÓN MÉDICA DEL NORTE</h1>
+        
+        <div style="display: flex;">
+        <div class="row align-items-center"> 
+            <div style="display: flex;">
+                <div class="col-md-3" style="position: absolute;left:0"><img width="30%; margin-top= 2px" src="{% static 'img/transparente logo.png' %}" alt=""></div>
+                <div class="titulo col-md-6">
+                <h1 class="verde-letra text-center">UNIÓN MÉDICA DEL NORTE</h1>
+                </div>
+                <div class="col-md-3" style="position:absolute;right:0">
+                    <div class="d-flex" style="width: 20PX;">
+                        <a class="p-4" href=""><img width="50" src="{% static 'img/f-logo.png' %}" alt=""></a>
+                        <a class="p-4" href=""><img width="50" src="{% static 'img/i-logo.png' %}" alt=""></a>
+                        <a class="p-4" href=""><img width="50" src="{% static 'img/w-logo.png' %}"alt=""></a>
+                        
+                </div>
+                </div>
             </div>
-            <div class="col">
-                <div class="d-flex" style="width: 20PX;">
-                    <a class="p-4" href=""><img width="50" src="{% static 'img/f-logo.png' %}" alt=""></a>
-                    <a class="p-4" href=""><img width="50" src="{% static 'img/i-logo.png' %}" alt=""></a>
-                    <a class="p-4" href=""><img width="50" src="{% static 'img/w-logo.png' %}"alt=""></a>
-                    
-            </div>
-            </div>
+        </div>
         </div>
