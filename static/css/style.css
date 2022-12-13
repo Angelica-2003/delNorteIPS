@@ -84,6 +84,21 @@
 .cerrar-sesion{
     margin-top: -20px; 
     margin-left: 1200px;
+    
+}
+.mensaje-correo{
+    margin-top:50px;
+}
+.correo-enlace{
+    margin-top:120px
+}
+.inicio-ad{
+    margin-top: 70px; 
+    margin-left: 1250px;
+    font-weight: bold;font-size: 100%;
+}
+.card{
+    margin-top: 110px;
 }
 
 @media screen and (min-width:801px) and (max-width:1200px){
@@ -99,6 +114,9 @@
 
     .cerrar-sesion{
         margin-left: 70%;
+    }
+    .inicio-ad{
+        margin-left:70%;
     }
     
     
@@ -135,8 +153,17 @@
     .btn-agendar{
         margin-left:130px;
     }
+    .btn-cancelar{
+        margin-top: 10px;
+    }
+    .btn-listar{
+        margin-top:10px;
+    }
     .cerrar-sesion{
         margin-left: 80%;
+    }
+    .inicio-ad{
+        margin-left:80%;
     }
 }
 
@@ -158,6 +185,7 @@
     .iconos{
         display: none;
     }
+   
     
 }
 
