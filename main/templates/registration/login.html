@@ -2,6 +2,9 @@
 {% load static %}
 
 {% block contenido %}
+<div class="ayuda-funcionario">
+    <a href="{% url 'ayuda' %}">AYUDA</a>
+</div>
 <div class="formulario">
     <form method="post" style="border:black;text-align: center;">
         {% csrf_token %}

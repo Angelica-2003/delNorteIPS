@@ -19,7 +19,7 @@ from django.conf.urls import handler404
 from buscarUsuario.views import buscarUsuario
 
 
-from main.views import error_404, logout_user, submenu,listar,inicio
+from main.views import error_404, logout_user, submenu,listar,inicio,ayuda
 from django.contrib.auth.views import LoginView as login
 from django.contrib.auth import views as auth_views
 
@@ -31,6 +31,7 @@ urlpatterns = [
     path('inicio/',inicio,name='inicio-adm'),
     path('submenu/',submenu,name='submenu'),
     path('buscarUsuario/',listar,name='buscarUsuario'),
+    path('ayuda/',ayuda,name='ayuda'),
     path('pacientes/',include('paciente.urls')),
     path('cita/',include('cita.urls')),
     path('buscar/',include('buscar.urls')),

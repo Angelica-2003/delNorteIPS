@@ -46,4 +46,10 @@ def logout_user(request):
     logout(request)
     return redirect("login")
 
+def ayuda(request):
+   
+    context={}
+
+    return render(request,"ayuda.html",context)
+
 

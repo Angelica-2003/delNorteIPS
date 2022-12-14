@@ -11,7 +11,7 @@
     background: #158f97;
     position: absolute; 
     margin-left: 40%; 
-    margin-top: 12%; 
+    margin-top: 6%; 
     opacity: 0.7; 
     border-radius: 7px; 
     padding: 37px;
@@ -86,6 +86,11 @@
     margin-left: 1200px;
     
 }
+.ayuda-funcionario{
+    margin-top: 80px; 
+    margin-left: 1250px;
+    font-weight: bold;font-size: 100%;
+}
 .mensaje-correo{
     margin-top:50px;
 }
@@ -93,7 +98,7 @@
     margin-top:120px
 }
 .inicio-ad{
-    margin-top: 70px; 
+    margin-top: 80px; 
     margin-left: 1250px;
     font-weight: bold;font-size: 100%;
 }
@@ -118,6 +123,30 @@
     .inicio-ad{
         margin-left:70%;
     }
+    .ayuda{
+        margin-left: 70%;
+    }
+    .iconos{
+        display: none;
+    }
+    .btn-agendar{
+        color:beige;font-weight: bold; 
+        font-size: 100%; 
+        margin-top: 30px;
+        margin-left: 10px;
+    }
+    .btn-cancelar{
+        color:beige;font-weight: bold; 
+        font-size: 100%; 
+        margin-left: 10px;
+        margin-top: 30px;
+    }
+    .btn-listar{
+        color:beige;font-weight: bold; 
+        font-size: 100%; margin-left: 130px; 
+        margin-top: 30px;
+        margin-left:10px;
+    }
     
     
 }
@@ -131,7 +160,7 @@
     }
     .formulario{
         margin-left: 20%;
-        margin-top:30%;
+        margin-top:20%;
     }
     .triangulo{
         display: none;
@@ -151,18 +180,23 @@
         margin-top: 20%;
     }
     .btn-agendar{
-        margin-left:130px;
+        margin-left:70px;
     }
     .btn-cancelar{
         margin-top: 10px;
+        margin-left: 70px;
     }
     .btn-listar{
         margin-top:10px;
+        margin-left:70px;
     }
     .cerrar-sesion{
         margin-left: 80%;
     }
     .inicio-ad{
+        margin-left:80%;
+    }
+    .ayuda{
         margin-left:80%;
     }
 }
@@ -185,7 +219,7 @@
     .iconos{
         display: none;
     }
-   
+
     
 }
 
