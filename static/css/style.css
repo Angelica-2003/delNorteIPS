@@ -90,6 +90,7 @@
     margin-top: 80px; 
     margin-left: 1250px;
     font-weight: bold;font-size: 100%;
+
 }
 .mensaje-correo{
     margin-top:50px;
@@ -123,7 +124,7 @@
     .inicio-ad{
         margin-left:70%;
     }
-    .ayuda{
+    .ayuda-funcionario{
         margin-left: 70%;
     }
     .iconos{
@@ -196,7 +197,7 @@
     .inicio-ad{
         margin-left:80%;
     }
-    .ayuda{
+    .ayuda-funcionario{
         margin-left:80%;
     }
 }
