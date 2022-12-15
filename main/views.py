@@ -25,6 +25,7 @@ def listar(request):
     return render(request,'listar.html',context)
 
 def modificarUsuario(request):
+    #prueba
     context={}
     return render(request,'modificarUsuario.html',context)
 
