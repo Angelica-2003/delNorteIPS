@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls import handler404
-from buscarUsuario.views import buscarUsuario
 
 
 from main.views import error_404, logout_user, submenu,listar,inicio,ayuda
@@ -34,10 +33,6 @@ urlpatterns = [
     path('ayuda/',ayuda,name='ayuda'),
     path('pacientes/',include('paciente.urls')),
     path('cita/',include('cita.urls')),
-    path('buscar/',include('buscar.urls')),
-    path('modificar/',include('modificar.urls')),
-    path('cancelar/',include('cancelar.urls')),
-    path('buscarUsuario/',include('buscarUsuario.urls')),
 
     
     path('logout/',logout_user,name='fin-sesion'),
