@@ -21,6 +21,7 @@ def submenu(request):
     return render(request,'submenu.html',context)
 
 def listar(request):
+    #prueba2
     context={}
     return render(request,'listar.html',context)
 
