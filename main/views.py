@@ -17,6 +17,7 @@ def pacientes(request):
     return render(request,'pacientes-crear.html',context)
 
 def submenu(request):
+    #prueba3
     context={}
     return render(request,'submenu.html',context)
 
